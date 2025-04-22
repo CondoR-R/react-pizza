@@ -23,17 +23,14 @@ button {
 body {
   background-color: #fae097;
   padding: var(--pad-4-5rem);
+  padding-bottom: 0;
 }
 
 .app {
   width: 134rem;
   min-height: calc(100vh - 2 * var(--pad-4-5rem));
-  border-radius: 1rem;
-  background-color: var(--color-white);
 
   margin: 0 auto;
-
-  padding: var(--pad-4-5rem) 0;
 }
 
 h1 {
@@ -58,6 +55,9 @@ button {
 
 .main {
   padding: var(--pad-4-5rem);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-color: var(--color-white);
 
   .header {
     margin-bottom: var(--pad-4-5rem);

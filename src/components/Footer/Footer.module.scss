@@ -1,0 +1,10 @@
+.footer {
+  padding: var(--pad-4-5rem);
+
+  p {
+    width: 50%;
+    text-align: center;
+    font-size: 1.6rem;
+    color: color-mix(in srgb, #fae097, black 25%);
+  }
+}

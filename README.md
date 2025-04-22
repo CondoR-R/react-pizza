@@ -11,6 +11,7 @@
 ## Технологии
 
 - [React] (https://react.dev/)
+- [React Router]
 
 ## Использование
 

@@ -1,11 +1,12 @@
 import Btn from "../Btn/Btn";
 import style from "./Header.module.scss";
+import logo from "../../assets/img/logo.svg";
 
 function Header() {
   return (
     <header className={`${style.header} d-flex jc-sb`}>
       <div className={`${style.lefftSide} d-flex ai-c`}>
-        <img src="./img/logo.svg" alt="Логотип" width={38} height={38} />
+        <img src={logo} alt="Логотип" width={38} height={38} />
         <div className={style.titleBox}>
           <h2>React Pizza</h2>
           <span>самая реактивная пицца во вселенной</span>
