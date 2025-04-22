@@ -1,0 +1,36 @@
+.categories {
+  overflow: auto;
+  gap: 1rem;
+
+  li {
+    padding: 1.5rem 3rem;
+    background-color: var(--color-light-gray);
+    border-radius: 3rem;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--color-light-gray), black 5%);
+    }
+
+    &:active {
+      background-color: color-mix(in srgb, var(--color-light-gray), black 10%);
+    }
+  }
+
+  .active {
+    background-color: var(--color-black);
+    color: var(--color-white);
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--color-light-gray), black 90%);
+    }
+
+    &:active {
+      background-color: color-mix(in srgb, var(--color-light-gray), black 95%);
+    }
+  }
+}

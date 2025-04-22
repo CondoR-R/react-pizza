@@ -1,0 +1,50 @@
+.btn {
+  padding: 1.5rem 2.5rem;
+  border-radius: 3rem;
+  font-weight: 600;
+  gap: 0.8rem;
+  color: var(--color-white);
+  background-color: var(--color-orange);
+  border: 1px solid var(--color-orange);
+
+  transition: all 0.2s linear;
+
+  span {
+    color: var(--color-white);
+  }
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--color-orange), black 5%);
+    transform: scale(1.03);
+  }
+
+  &:active {
+    background-color: color-mix(in srgb, var(--color-orange), black 10%);
+    transform: scale(1.02);
+  }
+}
+
+.white {
+  background-color: var(--color-white);
+  color: var(--color-orange);
+
+  svg {
+    path {
+      fill: var(--color-orange);
+    }
+  }
+
+  span {
+    color: var(--color-orange);
+  }
+
+  &:hover {
+    background-color: var(--color-white);
+    transform: scale(1.03);
+  }
+
+  &:active {
+    background-color: var(--color-white);
+    transform: scale(1.02);
+  }
+}

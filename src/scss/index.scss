@@ -1,0 +1,78 @@
+// reset
+@import "reset/reset";
+@import "reset/normalize";
+
+// variables
+@import "variables/variables";
+
+// utilites
+@import "utilites/flex";
+
+* {
+  box-sizing: border-box;
+  color: var(--color-black);
+}
+
+:root,
+input,
+button {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: #fae097;
+  padding: var(--pad-4-5rem);
+}
+
+.app {
+  width: 134rem;
+  min-height: calc(100vh - 2 * var(--pad-4-5rem));
+  border-radius: 1rem;
+  background-color: var(--color-white);
+
+  margin: 0 auto;
+
+  padding: var(--pad-4-5rem) 0;
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+p,
+span,
+button,
+a,
+input,
+li {
+  font-size: 1.6rem;
+}
+
+button {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.main {
+  padding: var(--pad-4-5rem);
+
+  .header {
+    margin-bottom: var(--pad-4-5rem);
+  }
+
+  .body {
+    h1 {
+      margin-bottom: 3.5rem;
+    }
+
+    .content {
+      display: flex;
+      row-gap: 6.5rem;
+      column-gap: 3rem;
+      flex-wrap: wrap;
+    }
+  }
+}

@@ -1,0 +1,90 @@
+.sort {
+  position: relative;
+
+  .settings {
+    user-select: none;
+    gap: 0.8rem;
+
+    button {
+      font-size: 1.4rem;
+    }
+
+    svg {
+      height: 0.562rem;
+      width: 1rem;
+      transform: translateY(-2px);
+      transition: transform 0.2s linear;
+    }
+
+    .down {
+      transform: rotate(180deg);
+    }
+
+    span {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .sortType {
+      color: var(--color-orange);
+      text-decoration: dashed underline;
+      transition: color 0.2s linear;
+
+      &:hover {
+        color: color-mix(in srgb, var(--color-orange), black 10%);
+      }
+
+      &:active {
+        color: color-mix(in srgb, var(--color-orange), black 20%);
+      }
+    }
+  }
+
+  .drawer {
+    position: absolute;
+    width: 13.2rem;
+    height: 13.6rem;
+    padding: 1rem 0;
+    border-radius: 1rem;
+    box-shadow: 0px 5px 15px var(--color-gray);
+    top: 3rem;
+    right: 0;
+    overflow: hidden;
+
+    ul {
+      overflow: hidden;
+    }
+    li {
+      overflow: hidden;
+
+      transition: background-color 0.2s linear;
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--color-orange), white 90%);
+      }
+
+      &:active {
+        background-color: color-mix(in srgb, var(--color-orange), white 85%);
+      }
+
+      button {
+        padding: 1rem 1.4rem;
+      }
+    }
+
+    .active {
+      background-color: color-mix(in srgb, var(--color-orange), white 90%);
+      button {
+        color: var(--color-orange);
+      }
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--color-orange), white 85%);
+      }
+
+      &:active {
+        background-color: color-mix(in srgb, var(--color-orange), white 80%);
+      }
+    }
+  }
+}

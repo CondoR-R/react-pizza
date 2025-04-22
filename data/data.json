@@ -1,0 +1,5 @@
+{
+  "pizzas": [
+    { "id": 1, "img": "./img/pizzas/1.avif", "name": "Креветки и Песто" }
+  ]
+}
