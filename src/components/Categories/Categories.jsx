@@ -1,33 +1,27 @@
 import { NavLink } from "react-router-dom";
+
 import style from "./Categories.module.scss";
+import "./active.scss";
 
 function Categories() {
+  const categories = [
+    { type: "Все", path: "/all" },
+    { type: "Мясные", path: "/meat" },
+    { type: "Вегатарианские", path: "/vegetarian" },
+    { type: "Гриль", path: "/grill" },
+    { type: "Острые", path: "/sharp" },
+    { type: "Закрытые", path: "/closed" },
+  ];
+
   return (
     <ul className={`${style.categories} d-flex`}>
-      {/* <li className={style.active}>
-        <NavLink>Все</NavLink>
-      </li>
-      <li>
-        <NavLink>Мясные</NavLink>
-      </li>
-      <li>
-        <NavLink>Вегатарианские</NavLink>
-      </li>
-      <li>
-        <NavLink>Гриль</NavLink>
-      </li>
-      <li>
-        <NavLink>Острые</NavLink>
-      </li>
-      <li>
-        <NavLink>Закрытые</NavLink>
-      </li> */}
-      <li className={style.active}>Все</li>
-      <li>Мясные</li>
-      <li>Вегатарианские</li>
-      <li>Гриль</li>
-      <li>Острые</li>
-      <li>Закрытые</li>
+      {categories.map(({ type, path }, index) => (
+        <li key={index}>
+          <NavLink to={path} className={style.link}>
+            {type}
+          </NavLink>
+        </li>
+      ))}
     </ul>
   );
 }

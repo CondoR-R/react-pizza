@@ -1,0 +1,12 @@
+.active {
+  background-color: var(--color-black);
+  color: var(--color-white);
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--color-light-gray), black 90%);
+  }
+
+  &:active {
+    background-color: color-mix(in srgb, var(--color-light-gray), black 95%);
+  }
+}

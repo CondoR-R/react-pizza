@@ -1,5 +1,12 @@
 {
   "pizzas": [
-    { "id": 1, "img": "./img/pizzas/1.avif", "name": "Креветки и Песто" }
+    {
+      "id": "1",
+      "img": "https://media.dodostatic.net/image/r:584x584/019591b642d87304a62d322945990861.avif",
+      "name": "Креветки и Песто",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 659, "medium": 979, "big": 1149 },
+      "categories": ["meat"]
+    }
   ]
 }
