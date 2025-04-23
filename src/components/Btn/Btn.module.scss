@@ -54,3 +54,39 @@
     transform: scale(1.02);
   }
 }
+
+.pad {
+  padding: 1.8rem 5.4rem;
+}
+
+.black {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: 1px solid var(--color-black);
+
+  svg {
+    path {
+      fill: var(--color-white);
+    }
+  }
+
+  svg + svg {
+    path {
+      stroke: var(--color-white);
+    }
+  }
+
+  span {
+    color: var(--color-white);
+  }
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--color-light-gray), black 90%);
+    transform: scale(1.03);
+  }
+
+  &:active {
+    background-color: color-mix(in srgb, var(--color-light-gray), black 95%);
+    transform: scale(1.02);
+  }
+}

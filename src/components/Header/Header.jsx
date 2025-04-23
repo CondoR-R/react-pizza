@@ -1,19 +1,21 @@
 import Btn from "../Btn/Btn";
 import logo from "../../assets/img/logo.svg";
+
 import CartIcon from "../Icons/CartIcon";
 
 import style from "./Header.module.scss";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <header className={`${style.header} d-flex jc-sb`}>
-      <div className={`${style.lefftSide} d-flex ai-c`}>
+      <Link className={`${style.lefftSide} d-flex ai-c`}>
         <img src={logo} alt="Логотип" width={38} height={38} />
         <div className={style.titleBox}>
           <h2>React Pizza</h2>
           <span>самая реактивная пицца во вселенной</span>
         </div>
-      </div>
+      </Link>
       <div className={style.rightSide}>
         <Btn>
           <span>520 руб.</span>

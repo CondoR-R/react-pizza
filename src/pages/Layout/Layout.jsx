@@ -11,7 +11,7 @@ function Layout() {
     <div className={style.layout}>
       <Header />
       <HorizontalLine />
-      <main className="main">
+      <main className={style.main}>
         <Outlet />
       </main>
       <Footer />

@@ -6,14 +6,17 @@ import {
 
 import Layout from "./pages/Layout/Layout";
 import Main from "./pages/Main/Main";
+import NotFound from "./pages/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: <Navigate to="/all" /> },
-      { path: ":category", element: <Main /> },
+      { index: true, element: <Navigate to="pizzas/all" /> },
+      { path: "pizzas/:category", element: <Main /> },
+
+      { path: "*", element: <NotFound /> },
     ],
   },
 ]);
