@@ -3,6 +3,8 @@ import Categories from "../../components/Categories/Categories";
 import Sort from "../../components/Sort/Sort";
 import style from "./Main.module.scss";
 
+import pizzas from "../../assets/pizzas.json";
+
 function Main() {
   return (
     <div className={style.main}>
@@ -13,8 +15,9 @@ function Main() {
       <div className={style.body}>
         <h1>Все пиццы</h1>
         <div className={style.content}>
-          <Card cart={2} />
-          <Card />
+          {pizzas.map((pizza) => (
+            <Card key={pizza.id} pizza={pizza} />
+          ))}
         </div>
       </div>
     </div>

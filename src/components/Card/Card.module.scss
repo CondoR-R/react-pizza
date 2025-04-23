@@ -59,3 +59,9 @@
     }
   }
 }
+
+.absent {
+  // pointer-events: none;
+  background-color: color-mix(in srgb, var(--color-gray), white 80%);
+  cursor: not-allowed;
+}
