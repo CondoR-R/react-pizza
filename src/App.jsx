@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
 import Layout from "./pages/Layout/Layout";
 import Main from "./pages/Main/Main";
@@ -8,7 +12,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: <Main /> },
+      { index: true, element: <Navigate to="/all" /> },
       { path: ":category", element: <Main /> },
     ],
   },

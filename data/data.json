@@ -2,11 +2,228 @@
   "pizzas": [
     {
       "id": "1",
-      "img": "https://media.dodostatic.net/image/r:584x584/019591b642d87304a62d322945990861.avif",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/019591b642d87304a62d322945990861.avif",
       "name": "Креветки и Песто",
-      "dough": { "subtle": true, "traditioal": true },
+      "dough": { "subtle": false, "traditioal": true },
       "price": { "small": 659, "medium": 979, "big": 1149 },
-      "categories": ["meat"]
+      "categories": ["meat"],
+      "rating": 4
+    },
+    {
+      "id": "2",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/019591c69fac7921a27e4ecd8c99f9df.avif",
+      "name": "Чилл-грилл",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 559, "medium": 865, "big": 1029 },
+      "categories": ["meat", "grill"],
+      "rating": 2
+    },
+    {
+      "id": "3",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/019591a2e222794a81731c99f3cc34ec.avif",
+      "name": "Баварская",
+      "dough": { "subtle": false, "traditioal": true },
+      "price": { "small": 629, "medium": 905, "big": 1189 },
+      "categories": ["meat"],
+      "rating": 3
+    },
+    {
+      "id": "4",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d610d2925109ab2e1c92cc5383c.avif",
+      "name": "Сырная",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 449, "medium": 765, "big": 949 },
+      "categories": ["vegetarian"],
+      "rating": 7
+    },
+    {
+      "id": "5",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d612fc7b7fca5be822752bee1e5.avif",
+      "name": "Пепперони фреш",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 449, "medium": 765, "big": 949 },
+      "categories": ["meat"],
+      "rating": 8
+    },
+    {
+      "id": "6",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d61706d472f9a5d71eb94149304.avif",
+      "name": "Чоризо фреш",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 449, "medium": 765, "big": 949 },
+      "categories": ["meat", "sharp"],
+      "rating": 2
+    },
+    {
+      "id": "7",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ef5b10b39bbbbda9f8c4e4ff1b067c.avif",
+      "name": "Ветчина и грибы",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 539, "medium": 845, "big": 999 },
+      "categories": ["meat"],
+      "rating": 6
+    },
+    {
+      "id": "8",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d614cbe0530b7234b6d7a6e5f8e.avif",
+      "name": "Двойной цыпленок",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 519, "medium": 825, "big": 974 },
+      "categories": ["meat"],
+      "rating": 9
+    },
+    {
+      "id": "9",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d60fda22358ac33c6a44eb093a2.avif",
+      "name": "Ветчина и сыр",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 519, "medium": 825, "big": 974 },
+      "categories": ["meat"],
+      "rating": 3
+    },
+    {
+      "id": "10",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/019591a0591d7642b97bf6ed6da45252.avif",
+      "name": "Аррива!",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 619, "medium": 935, "big": 1119 },
+      "categories": ["meat", "sharp"],
+      "rating": 10
+    },
+    {
+      "id": "11",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/0194d4fd39bb7352bfa5de2219e88b9b.avif",
+      "name": "Креветки со сладким чили",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 719, "medium": 1045, "big": 1389 },
+      "categories": ["meat", "sharp"],
+      "rating": 4
+    },
+    {
+      "id": "12",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/01953ced168c758399984df8561623a3.avif",
+      "name": "Бефстроганов",
+      "dough": { "subtle": true, "traditioal": false },
+      "price": { "small": 599, "medium": 905, "big": 1069 },
+      "categories": ["meat"],
+      "rating": 2
+    },
+    {
+      "id": "13",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/019591b13a1a724b90092c16d9b1c05a.avif",
+      "name": "Карбонара",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 659, "medium": 965, "big": 1139 },
+      "categories": ["meat"],
+      "rating": 10
+    },
+    {
+      "id": "14",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d6175c10773bfe36e56d48df7e3.avif",
+      "name": "Жюльен",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 609, "medium": 785, "big": 979 },
+      "categories": ["meat"],
+      "rating": 2
+    },
+    {
+      "id": "15",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/0194d4f6904975a5a6427e297591980d.avif",
+      "name": "Мясной микс с говядиной и колбасками ",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 599, "medium": 925, "big": 1109 },
+      "categories": ["meat", "sharp"],
+      "rating": 7
+    },
+    {
+      "id": "16",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/019589a573477186898528944fd881a2.avif",
+      "name": "Песто",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 609, "medium": 939, "big": 1079 },
+      "categories": ["meat"],
+      "rating": 10
+    },
+    {
+      "id": "17",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d6108e3a1c9952cd3a7f39a4d02.avif",
+      "name": "Мясная",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 609, "medium": 939, "big": 1079 },
+      "categories": ["meat"],
+      "rating": 8
+    },
+    {
+      "id": "18",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d610e8bbb248f31270be742b4bd.avif",
+      "name": "Сырный цыпленок",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 619, "medium": 929, "big": 1119 },
+      "categories": ["meat"],
+      "rating": 3
+    },
+    {
+      "id": "19",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d610a62d78598406363a9a8ad65.avif",
+      "name": "Пепперони",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 519, "medium": 765, "big": 929 },
+      "categories": ["meat"],
+      "rating": 9
+    },
+    {
+      "id": "20",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d617e9339cfb185921a343ad8fd.avif",
+      "name": "Гавайская",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 539, "medium": 845, "big": 1009 },
+      "categories": ["meat"],
+      "rating": 6
+    },
+    {
+      "id": "21",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d6110059795842d40396bcf1e73.avif",
+      "name": "Цыпленок барбекю",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 659, "medium": 965, "big": 1129 },
+      "categories": ["meat", "grill"],
+      "rating": 7
+    },
+    {
+      "id": "22",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d6105ef6690b86fbde6150b5b0c.avif",
+      "name": "Маргарита",
+      "dough": { "subtle": true, "traditioal": false },
+      "price": { "small": 539, "medium": 845, "big": 1009 },
+      "categories": ["vegetarian"],
+      "rating": 4
+    },
+    {
+      "id": "23",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d6149eb101d8727573088fa2eff.avif",
+      "name": "Диабло",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 659, "medium": 965, "big": 1129 },
+      "categories": ["meat", "sharp"],
+      "rating": 2
+    },
+    {
+      "id": "24",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ef8537f2244e8caeb7c69e644d0537.avif",
+      "name": "Двойная пепперони",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 619, "medium": 935, "big": 1209 },
+      "categories": ["meat"],
+      "rating": 6
+    },
+    {
+      "id": "25",
+      "imgUrl": "https://media.dodostatic.net/image/r:584x584/11ee7d61546d8483a61a0bbaa7adcc78.avif",
+      "name": "Овощи и грибы",
+      "dough": { "subtle": true, "traditioal": true },
+      "price": { "small": 629, "medium": 949, "big": 1239 },
+      "categories": ["vegetarian"],
+      "rating": 4
     }
   ]
 }
