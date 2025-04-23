@@ -1,7 +1,8 @@
 import Btn from "../Btn/Btn";
-import style from "./Header.module.scss";
 import logo from "../../assets/img/logo.svg";
 import CartIcon from "../Icons/CartIcon";
+
+import style from "./Header.module.scss";
 
 function Header() {
   return (

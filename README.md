@@ -15,6 +15,7 @@
 - Sass
 - CSS module
 - React Router
+- React Content Loader
 
 ## Использование
 
@@ -49,3 +50,7 @@ npm run dev
 - Добавление React Router, преднастройка NavLink на категории
 
 ### 23.04.2025
+
+- Добавление получения пицц с сервера (mockapi)
+- Отображение загрузки с помощью скелета (React Content Loader)
+- SVG файлы вынесены в отдельные компоненты

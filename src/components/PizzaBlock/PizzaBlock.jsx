@@ -1,10 +1,27 @@
+import { useState } from "react";
+
 import Btn from "../Btn/Btn";
 import AddIcon from "../Icons/AddIcon";
 import CartIcon from "../Icons/CartIcon";
-import style from "./Card.module.scss";
+
+import style from "./PizzaBlock.module.scss";
 
 function Card({ pizza, cart = 0 }) {
   const { id, imgUrl, name, dough, price, categories, rating } = pizza;
+
+  const [doughType, setDoughType] = useState(
+    dough.subtle ? 0 : dough.traditioal ? 1 : null
+  );
+  const [sizeType, setSizeType] = useState(0);
+
+  const sizes = [26, 30, 40];
+
+  const onClickDoughType = (type) => () => {
+    setDoughType(type);
+  };
+  const onClickSizeType = (size) => () => {
+    setSizeType(size);
+  };
 
   return (
     <div className={`${style.card} d-flex f-col ai-c`}>
@@ -12,19 +29,37 @@ function Card({ pizza, cart = 0 }) {
       <h2>{name}</h2>
       <div className={style.settingsBox}>
         <div className={style.doughTypeBox}>
+          <div
+            className={style.checkBox}
+            style={{ transform: `translateX(${doughType * 138}px)` }}
+          />
           <button
-            className={`${style.activeBtn} ${dough.subtle ? "" : style.absent}`}
+            onClick={onClickDoughType(0)}
+            className={dough.subtle ? "" : style.absent}
           >
             Тонкое
           </button>
-          <button className={`${dough.traditioal ? "" : style.absent}`}>
+          <button
+            onClick={onClickDoughType(1)}
+            className={dough.traditioal ? "" : style.absent}
+          >
             Традиционное
           </button>
         </div>
         <div className={style.sizeBox}>
-          <button className={style.activeBtn}>26 см.</button>
-          <button>30 см.</button>
-          <button>40 см.</button>
+          <div
+            className={style.checkBox}
+            style={{ transform: `translateX(${sizeType * 92}px)` }}
+          />
+          {sizes.map((size, i) => (
+            <button
+              key={i}
+              onClick={onClickSizeType(i)}
+              className={sizeType === i ? style.activeBtn : ""}
+            >
+              {size} см.
+            </button>
+          ))}
         </div>
       </div>
       <div className={`${style.cardBottom} d-flex jc-sb ai-c`}>

@@ -1,5 +1,6 @@
 .card {
   width: 29rem;
+  height: 50rem;
 
   img {
     width: 26rem;
@@ -11,6 +12,8 @@
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 2.2rem;
+    height: 4rem;
+    text-align: center;
   }
 
   .settingsBox {
@@ -23,12 +26,34 @@
     div {
       display: flex;
       justify-content: space-between;
-      gap: 0.7rem;
       position: relative;
+    }
+
+    .checkBox {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3.609rem;
+      background-color: var(--color-white);
+      box-shadow: 0 5px 15px color-mix(in srgb, var(--color-gray), white 80%);
+      z-index: 1;
+      border-radius: 0.5rem;
+      transform: translateX(0);
+      transition: transform 0.2s linear;
     }
 
     .doughTypeBox {
       margin-bottom: 0.7rem;
+
+      .checkBox {
+        width: 13.8rem;
+      }
+    }
+
+    .sizeBox {
+      .checkBox {
+        width: 9.2rem;
+      }
     }
 
     button {
@@ -38,11 +63,7 @@
       flex: 1;
       font-weight: 600;
       border-radius: 0.5rem;
-    }
-
-    .activeBtn {
-      background-color: var(--color-white);
-      box-shadow: 0 5px 15px color-mix(in srgb, var(--color-gray), white 80%);
+      z-index: 2;
     }
   }
 
@@ -61,7 +82,8 @@
 }
 
 .absent {
-  // pointer-events: none;
   background-color: color-mix(in srgb, var(--color-gray), white 80%);
   cursor: not-allowed;
+
+  pointer-events: none;
 }
