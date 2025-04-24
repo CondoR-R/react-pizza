@@ -1,0 +1,103 @@
+.cart {
+  padding: 0 22.5rem;
+
+  div {
+    flex: 1;
+  }
+}
+
+.header {
+  margin-bottom: 3rem;
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    svg {
+      path {
+        stroke: var(--color-black);
+      }
+    }
+
+    span {
+      font-size: 3.2rem;
+    }
+  }
+
+  .clearCart {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    svg {
+      path {
+        stroke: var(--color-gray);
+        transition: stroke 0.2s linear;
+      }
+    }
+
+    span {
+      color: var(--color-gray);
+      transition: color 0.2s linear;
+    }
+
+    &:hover {
+      svg {
+        path {
+          stroke: color-mix(in srgb, var(--color-gray), black 25%);
+        }
+      }
+
+      span {
+        color: color-mix(in srgb, var(--color-gray), black 25%);
+      }
+    }
+
+    &:active {
+      svg {
+        path {
+          stroke: color-mix(in srgb, var(--color-gray), black 50%);
+        }
+      }
+
+      span {
+        color: color-mix(in srgb, var(--color-gray), black 50%);
+      }
+    }
+  }
+}
+
+.cartItems {
+  margin-bottom: 4rem;
+
+  .mb {
+    margin-bottom: 3rem;
+  }
+}
+
+.footer {
+  .total {
+    margin-bottom: 4rem;
+
+    .countPizza,
+    .totalPrice {
+      display: flex;
+      gap: 0.5rem;
+
+      span {
+        font-size: 2.2rem;
+      }
+
+      .span {
+        font-weight: 600;
+      }
+    }
+
+    .totalPrice {
+      .span {
+        color: var(--color-orange);
+      }
+    }
+  }
+}

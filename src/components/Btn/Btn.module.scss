@@ -90,3 +90,30 @@
     transform: scale(1.02);
   }
 }
+
+.grayBorder {
+  background-color: var(--color-white);
+  color: var(--color-gray);
+  font-weight: 200;
+  border: 1px solid var(--color-gray);
+
+  svg {
+    path {
+      stroke: var(--color-gray);
+    }
+  }
+
+  span {
+    color: var(--color-gray);
+  }
+
+  &:hover {
+    background-color: var(--color-white);
+    transform: scale(1.03);
+  }
+
+  &:active {
+    background-color: var(--color-white);
+    transform: scale(1.02);
+  }
+}

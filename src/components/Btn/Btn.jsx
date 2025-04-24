@@ -7,13 +7,16 @@ function Btn({
   isWhite = false,
   isBlack = false,
   isBigPad = false,
+  isGrayBorder = false,
 }) {
   return (
     <button
       onClick={onClick}
       className={`${style.btn} ${className} ${isWhite ? style.white : ""} ${
         isBlack ? style.black : ""
-      } ${isBigPad ? style.pad : ""} d-flex ai-c jc-sb `}
+      } ${isBigPad ? style.pad : ""} ${
+        isGrayBorder ? style.grayBorder : ""
+      } d-flex ai-c jc-sb `}
     >
       {children}
     </button>
