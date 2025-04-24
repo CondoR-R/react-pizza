@@ -18,12 +18,30 @@ input,
 button {
   font-size: 62.5%;
   font-family: "Roboto", sans-serif;
+
+  @media (max-width: 1110px) {
+    font-size: 57.1%;
+  }
+
+  @media (max-width: 932px) {
+    font-size: 42.86%;
+  }
+
+  @media (max-width: 700px) {
+    font-size: calc(0.1em + 1vw);
+  }
 }
 
 body {
   background-color: #fae097;
-  padding: var(--pad-4-5rem);
+  padding-top: var(--pad-4-5rem);
   padding-bottom: 0;
+
+  @media (max-width: 767px) {
+    padding: 0;
+
+    background-color: var(--color-white);
+  }
 }
 
 h1 {

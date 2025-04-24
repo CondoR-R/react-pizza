@@ -1,7 +1,7 @@
 import style from "./Cart.module.scss";
 
 function Cart() {
-  return <div></div>;
+  return <div>корзина</div>;
 }
 
 export default Cart;

@@ -31,7 +31,7 @@ function Card({ pizza, cart = 0 }) {
         <div className={style.doughTypeBox}>
           <div
             className={style.checkBox}
-            style={{ transform: `translateX(${doughType * 138}px)` }}
+            style={{ transform: `translateX(${doughType * 13.8}rem)` }}
           />
           <button
             onClick={onClickDoughType(0)}
@@ -49,7 +49,7 @@ function Card({ pizza, cart = 0 }) {
         <div className={style.sizeBox}>
           <div
             className={style.checkBox}
-            style={{ transform: `translateX(${sizeType * 92}px)` }}
+            style={{ transform: `translateX(${sizeType * 9.2}rem)` }}
           />
           {sizes.map((size, i) => (
             <button

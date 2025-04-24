@@ -8,7 +8,6 @@
     gap: 2rem;
     user-select: none;
     cursor: pointer;
-    text-decoration: none;
 
     .titleBox {
       h2 {
@@ -32,4 +31,8 @@
     background-color: var(--color-light-gray);
     opacity: 0.5;
   }
+}
+
+.link {
+  text-decoration: none;
 }

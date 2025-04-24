@@ -20,7 +20,7 @@ function InfoBlock({ title = "", text = "", imgUrl = "" }) {
         {text && <p>{text}</p>}
         <img src={imgUrl} alt={title} width={300} height={255} />
         <Btn onClick={onClickBtn} isBlack isBigPad>
-          Вернуться назад
+          Вернуться на главную
         </Btn>
       </div>
     </div>

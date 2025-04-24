@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <header className={`${style.header} d-flex jc-sb`}>
-      <Link className={`${style.lefftSide} d-flex ai-c`}>
+      <Link className={`${style.lefftSide} ${style.link} d-flex ai-c`} to="/">
         <img src={logo} alt="Логотип" width={38} height={38} />
         <div className={style.titleBox}>
           <h2>React Pizza</h2>
@@ -17,12 +17,14 @@ function Header() {
         </div>
       </Link>
       <div className={style.rightSide}>
-        <Btn>
-          <span>520 руб.</span>
-          <span className={style.verticalLine}></span>
-          <CartIcon width="18" height="18" />
-          <span>4</span>
-        </Btn>
+        <Link to="/cart" className={style.link}>
+          <Btn>
+            <span>520 руб.</span>
+            <span className={style.verticalLine}></span>
+            <CartIcon width="18" height="18" />
+            <span>4</span>
+          </Btn>
+        </Link>
       </div>
     </header>
   );
