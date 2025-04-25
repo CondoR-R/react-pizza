@@ -1,3 +1,4 @@
+// корзина
 function CartIcon({
   className = "",
   width = "",

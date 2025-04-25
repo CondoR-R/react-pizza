@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import ReactPaginate from "react-paginate";
 
 import PizzaBlock from "../../components/PizzaBlock/PizzaBlock";
 import Skeleton from "../../components/PizzaBlock/Skeleton";
@@ -15,34 +14,47 @@ import Pagination from "../../components/Pagination/Pagination";
 
 const MainContext = createContext({});
 
+// главная страница
 function Main() {
+  // состояния
+
+  // cостояния для querry string, фильтрации, поиска и пагинации
   const [category, setCategory] = useState("");
   const [sortBy, setSortBy] = useState("rating");
   const [sortOrder, setSortOrder] = useState("desc");
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
+  // пиццы с сервера и статус загрузки
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  // текущий путь и перенаправление при поиске
   const location = useLocation();
   const navigate = useNavigate();
 
+  // колличество пицц на странице
   const pageLimit = 8;
 
+  // обработчики событий
+
+  // смена категории
   const onClickCatregory = (newCategory) => () => {
     setCategory(newCategory);
     setCurrentPage(1);
   };
 
+  // смена направления сортировки
   const onClickTogleOrder = () => {
     setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
   };
 
+  // очистка поиска
   const onClickClearSearch = () => {
     setSearchValue("");
   };
 
+  // ввод поиска
   const onChangeSearch = (e) => {
     setSearchValue(e.target.value);
 
@@ -55,14 +67,18 @@ function Main() {
     navigate("/pizzas/all");
   };
 
+  // смена страницы (пагинация)
   const onClickChangePage = (e) => {
     setCurrentPage(e.selected + 1);
   };
 
+  // запросы к серверу
   useEffect(() => {
     setIsLoading(true);
     (async () => {
       try {
+        /* строка запроса или поиск или сортировка, тк mockapi не умеет работать 
+          с 2 сразу */
         const querryString = searchValue
           ? `search=${searchValue}`
           : `sortBy=${sortBy}&order=${sortOrder}&categories=${category}`;
@@ -73,6 +89,7 @@ function Main() {
         if (!pizzasRespons.ok) {
           throw new Error("404: Ошибка при попытке соединиться с сервером!");
         }
+
         const pizzasJson = await pizzasRespons.json();
         setPizzas(pizzasJson);
       } catch (err) {

@@ -4,6 +4,7 @@ import Btn from "../Btn/Btn";
 
 import style from "./InfoBlock.module.scss";
 
+// блок с информацией для пустой корзины и Not found page
 function InfoBlock({ title = "", text = "", imgUrl = "" }) {
   const navigate = useNavigate();
 

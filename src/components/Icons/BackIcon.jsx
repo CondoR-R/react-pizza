@@ -1,3 +1,4 @@
+// стрелка назад
 function BackIcon() {
   return (
     <svg

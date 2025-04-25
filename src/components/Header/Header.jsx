@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
+
 import Btn from "../Btn/Btn";
-import logo from "../../assets/img/logo.svg";
 
 import CartIcon from "../Icons/CartIcon";
 
 import style from "./Header.module.scss";
-import { Link } from "react-router-dom";
-import Search from "../Search/Search";
 
+import logo from "../../assets/img/logo.svg";
+
+// шапка сайта
 function Header() {
   return (
     <header className={`${style.header} d-flex jc-sb`}>

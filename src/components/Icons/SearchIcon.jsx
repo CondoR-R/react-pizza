@@ -1,3 +1,4 @@
+// лупа
 function SearchIcon() {
   return (
     <svg

@@ -3,7 +3,9 @@ import { useContext, useState } from "react";
 import style from "./Sort.module.scss";
 import { MainContext } from "../../pages/Main/Main";
 
+// блок сортировки
 function Sort() {
+  // статус открыт/закрыт
   const [isOpened, setIsOpened] = useState(false);
 
   const { sortOrder, sortBy, onClickTogleOrder, setSortBy } =
@@ -15,10 +17,14 @@ function Sort() {
     { name: "алфавиту", type: "name" },
   ];
 
+  // обработка событий
+
+  // открыть/закрыть
   const onClickTogleType = () => {
     setIsOpened((prev) => !prev);
   };
 
+  // выбор типа сортировки
   const onClickChangeSortBy = (type) => () => {
     setSortBy(type);
     setIsOpened(false);

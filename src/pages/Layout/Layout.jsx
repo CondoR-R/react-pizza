@@ -6,6 +6,7 @@ import HorizontalLine from "../../components/HorizontalLine/HorizontalLine";
 
 import style from "./Layout.module.scss";
 
+// оболочка для всех страниц
 function Layout() {
   return (
     <div className={style.layout}>

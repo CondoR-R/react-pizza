@@ -1,5 +1,6 @@
 import style from "./Footer.module.scss";
 
+// подвал сайта
 function Footer() {
   return (
     <footer className={`${style.footer} d-flex jc-c`}>

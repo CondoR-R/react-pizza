@@ -1,3 +1,4 @@
+// стрелка вперед
 function NextIcon() {
   return (
     <svg

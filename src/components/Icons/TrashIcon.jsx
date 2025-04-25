@@ -1,3 +1,4 @@
+// корзина
 function CartIcons() {
   return (
     <svg

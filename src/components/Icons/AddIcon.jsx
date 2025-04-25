@@ -1,3 +1,4 @@
+// плюс
 function AddIcon({ className = "", width = "", height = "" }) {
   return (
     <svg

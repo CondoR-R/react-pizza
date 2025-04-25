@@ -5,6 +5,7 @@ import "./active.scss";
 import { useContext } from "react";
 import { MainContext } from "../../pages/Main/Main";
 
+// меню с категориями
 function Categories() {
   const { onClickCatregory } = useContext(MainContext);
 

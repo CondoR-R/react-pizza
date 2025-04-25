@@ -1,3 +1,4 @@
+// крестик
 function CloseIcon({ className = "" }) {
   return (
     <svg

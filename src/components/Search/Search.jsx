@@ -1,9 +1,13 @@
 import { useContext } from "react";
-import SearchIcon from "../Icons/SearchIcon";
-import style from "./Search.module.scss";
+
 import { MainContext } from "../../pages/Main/Main";
+
+import SearchIcon from "../Icons/SearchIcon";
 import CloseIcon from "../Icons/CloseIcon";
 
+import style from "./Search.module.scss";
+
+// блок с поиском
 function Search() {
   const { searchValue, onChangeSearch, onClickClearSearch } =
     useContext(MainContext);

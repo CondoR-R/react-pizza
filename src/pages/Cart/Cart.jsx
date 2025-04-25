@@ -11,6 +11,7 @@ import CartIcon from "../../components/Icons/CartIcon";
 import TrashIcon from "../../components/Icons/TrashIcon";
 import BackIcon from "../../components/Icons/BackIcon";
 
+// страница коризины
 function Cart() {
   return (
     <div className={`${style.cart} d-flex jc-c ai-c`}>

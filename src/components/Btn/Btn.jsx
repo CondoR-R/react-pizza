@@ -1,5 +1,6 @@
 import style from "./Btn.module.scss";
 
+// большие кнопки (добавить в корзину, корзина, вернуться назад и тп)
 function Btn({
   children,
   onClick = () => {},

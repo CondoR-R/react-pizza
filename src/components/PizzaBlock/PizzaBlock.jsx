@@ -6,19 +6,30 @@ import CartIcon from "../Icons/CartIcon";
 
 import style from "./PizzaBlock.module.scss";
 
-function Card({ pizza, cart = 0 }) {
+// карточка пиццы
+function PizzaBlock({ pizza, cart = 0 }) {
   const { id, imgUrl, name, dough, price, categories, rating } = pizza;
 
+  // состояния
+
+  // тесто
   const [doughType, setDoughType] = useState(
     dough.subtle ? 0 : dough.traditioal ? 1 : null
   );
+
+  // размер
   const [sizeType, setSizeType] = useState(0);
 
   const sizes = [26, 30, 40];
 
+  // обработка событий
+
+  // выбор типа теста
   const onClickDoughType = (type) => () => {
     setDoughType(type);
   };
+
+  // выбор размера
   const onClickSizeType = (size) => () => {
     setSizeType(size);
   };
@@ -79,4 +90,4 @@ function Card({ pizza, cart = 0 }) {
   );
 }
 
-export default Card;
+export default PizzaBlock;

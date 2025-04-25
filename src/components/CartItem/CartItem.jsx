@@ -5,6 +5,7 @@ import RoundBtn from "../RoundBtn/RoundBtn";
 
 import style from "./CartItems.module.scss";
 
+// компонент товара в корзине
 function CartItem({ className }) {
   return (
     <div className={`${style.cartItemBox} ${className} d-flex jc-sb ai-c`}>
