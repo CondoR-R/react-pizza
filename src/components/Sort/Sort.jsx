@@ -1,28 +1,26 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import style from "./Sort.module.scss";
+import { MainContext } from "../../pages/Main/Main";
 
 function Sort() {
   const [isOpened, setIsOpened] = useState(false);
-  const [sortType, setSortType] = useState("popularity");
-  const [sortDirection, setSortDirection] = useState("desc");
+
+  const { sortOrder, sortBy, onClickTogleOrder, setSortBy } =
+    useContext(MainContext);
 
   const sortTypesArr = [
-    { name: "популярности", type: "popularity" },
-    { name: "цене", type: "price" },
-    { name: "алфавиту", type: "abc" },
+    { name: "популярности", type: "rating" },
+    { name: "цене", type: "minPrice" },
+    { name: "алфавиту", type: "name" },
   ];
-
-  const onClickTogleDirection = () => {
-    setSortDirection((prev) => (prev === "asc" ? "desc" : "asc"));
-  };
 
   const onClickTogleType = () => {
     setIsOpened((prev) => !prev);
   };
 
-  const onClickChangeType = (type) => () => {
-    setSortType(type);
+  const onClickChangeSortBy = (type) => () => {
+    setSortBy(type);
     setIsOpened(false);
   };
 
@@ -34,8 +32,8 @@ function Sort() {
             {sortTypesArr.map(({ type, name }, i) => (
               <li
                 key={i}
-                className={type === sortType ? style.active : ""}
-                onClick={onClickChangeType(type)}
+                className={type === sortBy ? style.active : ""}
+                onClick={onClickChangeSortBy(type)}
               >
                 <button>{name}</button>
               </li>
@@ -47,9 +45,9 @@ function Sort() {
       <div className={`${style.settings} d-flex ai-c`}>
         <button
           className={`${style.sortDirection} ${
-            sortDirection === "desc" ? style.down : ""
+            sortOrder === "desc" ? style.down : ""
           }`}
-          onClick={onClickTogleDirection}
+          onClick={onClickTogleOrder}
         >
           <svg
             className=""
@@ -67,7 +65,7 @@ function Sort() {
         </button>
         <span>Сортировка по:</span>
         <button className={style.sortType} onClick={onClickTogleType}>
-          {sortTypesArr.find((t) => t.type === sortType).name}
+          {sortTypesArr.find((t) => t.type === sortBy).name}
         </button>
       </div>
     </div>
