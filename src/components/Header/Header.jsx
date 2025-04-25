@@ -5,6 +5,7 @@ import CartIcon from "../Icons/CartIcon";
 
 import style from "./Header.module.scss";
 import { Link } from "react-router-dom";
+import Search from "../Search/Search";
 
 function Header() {
   return (
@@ -16,6 +17,7 @@ function Header() {
           <span>самая реактивная пицца во вселенной</span>
         </div>
       </Link>
+
       <div className={style.rightSide}>
         <Link to="/cart" className={style.link}>
           <Btn>

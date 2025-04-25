@@ -1,0 +1,36 @@
+.search {
+  border: 1px solid var(--color-light-gray);
+  border-radius: 1rem;
+  width: 30rem;
+  padding: 1rem 2rem;
+  gap: 1rem;
+
+  transition: border 0.2s linear;
+
+  @media (max-width: 700px) {
+    order: 1;
+    width: 100%;
+  }
+
+  &:focus-within {
+    border: 1px solid var(--color-gray);
+  }
+
+  .label {
+    svg {
+      width: 2rem;
+      height: 2rem;
+
+      path {
+        fill: var(--color-gray);
+      }
+    }
+  }
+
+  .input {
+    outline: none;
+    border: none;
+    flex: 1;
+    padding: 0;
+  }
+}
