@@ -15,9 +15,6 @@ function Sort() {
 
   const dispatch = useDispatch();
 
-  // const { /* sortOrder, */ sortBy /* onClickTogleOrder, */ /* setSortBy */ } =
-  //   useContext(MainContext);
-
   const sortTypesArr = [
     { name: "популярности", type: "rating" },
     { name: "цене", type: "minPrice" },
@@ -34,7 +31,6 @@ function Sort() {
   // выбор типа сортировки
   const onClickChangeSortBy = (type) => () => {
     dispatch(changeSortBy(type));
-    // setSortBy(type);
     setIsOpened(false);
   };
 

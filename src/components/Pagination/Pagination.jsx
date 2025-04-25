@@ -10,8 +10,6 @@ import { changeCurrentPage } from "../../redux/slices/filterSlice";
 
 // меню по страницам (снизу)
 function Pagination() {
-  // const { onClickChangePage, currentPage } = useContext(MainContext);
-
   const currentPage = useSelector((state) => state.filter.currentPage);
 
   const dispatch = useDispatch();

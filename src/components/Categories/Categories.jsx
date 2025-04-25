@@ -8,8 +8,6 @@ import "./active.scss";
 
 // меню с категориями
 function Categories() {
-  // const { onClickCatregory } = useContext(MainContext);
-
   const dispatch = useDispatch();
 
   const categories = [

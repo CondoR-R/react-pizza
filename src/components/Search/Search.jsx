@@ -10,9 +10,6 @@ import style from "./Search.module.scss";
 
 // блок с поиском
 function Search() {
-  // const { /* searchValue, */ onChangeSearch /* onClickClearSearch */ } =
-  //   useContext(MainContext);
-
   const searchValue = useSelector((state) => state.filter.searchValue);
 
   const dispatch = useDispatch();
