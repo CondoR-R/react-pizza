@@ -1,37 +1,41 @@
-import { createContext, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import PizzaBlock from "../../components/PizzaBlock/PizzaBlock";
 import Skeleton from "../../components/PizzaBlock/Skeleton";
 import Categories from "../../components/Categories/Categories";
 import Sort from "../../components/Sort/Sort";
 import Search from "../../components/Search/Search";
+import Pagination from "../../components/Pagination/Pagination";
 
 import style from "./Main.module.scss";
 
 import URL from "../../URL";
-import Pagination from "../../components/Pagination/Pagination";
-
-const MainContext = createContext({});
 
 // главная страница
 function Main() {
   // состояния
 
   // cостояния для querry string, фильтрации, поиска и пагинации
-  const [category, setCategory] = useState("");
-  const [sortBy, setSortBy] = useState("rating");
-  const [sortOrder, setSortOrder] = useState("desc");
-  const [searchValue, setSearchValue] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [category, setCategory] = useState("");
+  // const [sortBy, setSortBy] = useState("rating");
+  // const [sortOrder, setSortOrder] = useState("desc");
+  // const [searchValue, setSearchValue] = useState("");
+  // const [currentPage, setCurrentPage] = useState(1);
 
   // пиццы с сервера и статус загрузки
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const category = useSelector((state) => state.filter.category);
+  const sortOrder = useSelector((state) => state.filter.sortOrder);
+  const sortBy = useSelector((state) => state.filter.sortBy);
+  const searchValue = useSelector((state) => state.filter.searchValue);
+  const currentPage = useSelector((state) => state.filter.currentPage);
+
   // текущий путь и перенаправление при поиске
-  const location = useLocation();
-  const navigate = useNavigate();
+  // const location = useLocation();
+  // const navigate = useNavigate();
 
   // колличество пицц на странице
   const pageLimit = 8;
@@ -39,38 +43,38 @@ function Main() {
   // обработчики событий
 
   // смена категории
-  const onClickCatregory = (newCategory) => () => {
-    setCategory(newCategory);
-    setCurrentPage(1);
-  };
+  // const onClickCatregory = (newCategory) => () => {
+  //   setCategory(newCategory);
+  //   setCurrentPage(1);
+  // };
 
   // смена направления сортировки
-  const onClickTogleOrder = () => {
-    setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
-  };
+  // const onClickTogleOrder = () => {
+  //   setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
+  // };
 
   // очистка поиска
-  const onClickClearSearch = () => {
-    setSearchValue("");
-  };
+  // const onClickClearSearch = () => {
+  //   setSearchValue("");
+  // };
 
   // ввод поиска
-  const onChangeSearch = (e) => {
-    setSearchValue(e.target.value);
+  // const onChangeSearch = (e) => {
+  //   setSearchValue(e.target.value);
 
-    if (currentPage !== 1) {
-      setCurrentPage(1);
-    }
+  //   if (currentPage !== 1) {
+  //     setCurrentPage(1);
+  //   }
 
-    if (location.pathname === "pizzas/all") return;
-    setCategory("");
-    navigate("/pizzas/all");
-  };
+  //   if (location.pathname === "pizzas/all") return;
+  //   // setCategory("");
+  //   navigate("/pizzas/all");
+  // };
 
   // смена страницы (пагинация)
-  const onClickChangePage = (e) => {
-    setCurrentPage(e.selected + 1);
-  };
+  // const onClickChangePage = (e) => {
+  //   setCurrentPage(e.selected + 1);
+  // };
 
   // запросы к серверу
   useEffect(() => {
@@ -102,46 +106,29 @@ function Main() {
     })();
   }, [category, sortBy, sortOrder, searchValue, currentPage]);
 
-  const contextValue = {
-    sortOrder,
-    sortBy,
-    searchValue,
-    currentPage,
-    onClickCatregory,
-    onClickTogleOrder,
-    onClickClearSearch,
-    onChangeSearch,
-    onClickChangePage,
-    setSortBy,
-  };
-
   return (
-    <MainContext.Provider value={contextValue}>
-      <div className={style.main}>
-        <div className={`${style.header} d-flex jc-sb ai-c`}>
-          <Categories />
-          <Sort />
-        </div>
-        <div className={style.body}>
-          <div className={`${style.bodyHeader} d-flex ai-c jc-sb`}>
-            <h1>Все пиццы</h1>
-            <Search />
-          </div>
-
-          <div className={style.content}>
-            {isLoading
-              ? [...new Array(8)].map((_, i) => <Skeleton key={i} />)
-              : pizzas.map((pizza) => (
-                  <PizzaBlock key={pizza.id} pizza={pizza} />
-                ))}
-          </div>
-          <Pagination />
-        </div>
+    <div className={style.main}>
+      <div className={`${style.header} d-flex jc-sb ai-c`}>
+        <Categories />
+        <Sort />
       </div>
-    </MainContext.Provider>
+      <div className={style.body}>
+        <div className={`${style.bodyHeader} d-flex ai-c jc-sb`}>
+          <h1>Все пиццы</h1>
+          <Search />
+        </div>
+
+        <div className={style.content}>
+          {isLoading
+            ? [...new Array(8)].map((_, i) => <Skeleton key={i} />)
+            : pizzas.map((pizza) => (
+                <PizzaBlock key={pizza.id} pizza={pizza} />
+              ))}
+        </div>
+        <Pagination />
+      </div>
+    </div>
   );
 }
 
 export default Main;
-
-export { MainContext };

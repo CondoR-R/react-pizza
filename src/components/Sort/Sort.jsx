@@ -1,15 +1,22 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { changeSortBy, togleSortOrder } from "../../redux/slices/filterSlice";
 
 import style from "./Sort.module.scss";
-import { MainContext } from "../../pages/Main/Main";
 
 // блок сортировки
 function Sort() {
   // статус открыт/закрыт
   const [isOpened, setIsOpened] = useState(false);
 
-  const { sortOrder, sortBy, onClickTogleOrder, setSortBy } =
-    useContext(MainContext);
+  const sortOrder = useSelector((state) => state.filter.sortOrder);
+  const sortBy = useSelector((state) => state.filter.sortBy);
+
+  const dispatch = useDispatch();
+
+  // const { /* sortOrder, */ sortBy /* onClickTogleOrder, */ /* setSortBy */ } =
+  //   useContext(MainContext);
 
   const sortTypesArr = [
     { name: "популярности", type: "rating" },
@@ -26,7 +33,8 @@ function Sort() {
 
   // выбор типа сортировки
   const onClickChangeSortBy = (type) => () => {
-    setSortBy(type);
+    dispatch(changeSortBy(type));
+    // setSortBy(type);
     setIsOpened(false);
   };
 
@@ -53,7 +61,7 @@ function Sort() {
           className={`${style.sortDirection} ${
             sortOrder === "desc" ? style.down : ""
           }`}
-          onClick={onClickTogleOrder}
+          onClick={() => dispatch(togleSortOrder())}
         >
           <svg
             className=""

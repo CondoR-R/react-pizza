@@ -3,11 +3,14 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
+import { Provider } from "react-redux";
 
 import Layout from "./pages/Layout/Layout";
 import Main from "./pages/Main/Main";
 import Cart from "./pages/Cart/Cart";
 import NotFound from "./pages/NotFound/NotFound";
+
+import { store } from "./redux/store";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +27,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 }
 
 export default App;

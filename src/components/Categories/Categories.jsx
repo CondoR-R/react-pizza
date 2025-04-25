@@ -1,13 +1,16 @@
+import { useDispatch } from "react-redux";
+import { changeCategory } from "../../redux/slices/filterSlice";
+
 import { NavLink } from "react-router-dom";
 
 import style from "./Categories.module.scss";
 import "./active.scss";
-import { useContext } from "react";
-import { MainContext } from "../../pages/Main/Main";
 
 // меню с категориями
 function Categories() {
-  const { onClickCatregory } = useContext(MainContext);
+  // const { onClickCatregory } = useContext(MainContext);
+
+  const dispatch = useDispatch();
 
   const categories = [
     { type: "Все", path: "all" },
@@ -25,7 +28,7 @@ function Categories() {
           <NavLink
             to={`/pizzas/${path}`}
             className={style.link}
-            onClick={onClickCatregory(path === "all" ? "" : path)}
+            onClick={() => dispatch(changeCategory(path === "all" ? "" : path))}
           >
             {type}
           </NavLink>
