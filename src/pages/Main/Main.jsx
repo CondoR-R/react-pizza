@@ -1,15 +1,17 @@
 import { createContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
 import PizzaBlock from "../../components/PizzaBlock/PizzaBlock";
 import Skeleton from "../../components/PizzaBlock/Skeleton";
 import Categories from "../../components/Categories/Categories";
 import Sort from "../../components/Sort/Sort";
+import Search from "../../components/Search/Search";
 
 import style from "./Main.module.scss";
 
 import URL from "../../URL";
-import Search from "../../components/Search/Search";
-import { useLocation, useNavigate } from "react-router-dom";
+import Pagination from "../../components/Pagination/Pagination";
 
 const MainContext = createContext({});
 
@@ -18,6 +20,7 @@ function Main() {
   const [sortBy, setSortBy] = useState("rating");
   const [sortOrder, setSortOrder] = useState("desc");
   const [searchValue, setSearchValue] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,8 +28,11 @@ function Main() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const pageLimit = 8;
+
   const onClickCatregory = (newCategory) => () => {
     setCategory(newCategory);
+    setCurrentPage(1);
   };
 
   const onClickTogleOrder = () => {
@@ -40,9 +46,17 @@ function Main() {
   const onChangeSearch = (e) => {
     setSearchValue(e.target.value);
 
+    if (currentPage !== 1) {
+      setCurrentPage(1);
+    }
+
     if (location.pathname === "pizzas/all") return;
     setCategory("");
     navigate("/pizzas/all");
+  };
+
+  const onClickChangePage = (e) => {
+    setCurrentPage(e.selected + 1);
   };
 
   useEffect(() => {
@@ -53,7 +67,9 @@ function Main() {
           ? `search=${searchValue}`
           : `sortBy=${sortBy}&order=${sortOrder}&categories=${category}`;
 
-        const pizzasRespons = await fetch(`${URL}/items?${querryString}`);
+        const pizzasRespons = await fetch(
+          `${URL}/items?limit=${pageLimit}&page=${currentPage}&${querryString}`
+        );
         if (!pizzasRespons.ok) {
           throw new Error("404: Ошибка при попытке соединиться с сервером!");
         }
@@ -67,16 +83,18 @@ function Main() {
         setIsLoading(false);
       }
     })();
-  }, [category, sortBy, sortOrder, searchValue]);
+  }, [category, sortBy, sortOrder, searchValue, currentPage]);
 
   const contextValue = {
     sortOrder,
     sortBy,
     searchValue,
+    currentPage,
     onClickCatregory,
     onClickTogleOrder,
     onClickClearSearch,
     onChangeSearch,
+    onClickChangePage,
     setSortBy,
   };
 
@@ -100,6 +118,7 @@ function Main() {
                   <PizzaBlock key={pizza.id} pizza={pizza} />
                 ))}
           </div>
+          <Pagination />
         </div>
       </div>
     </MainContext.Provider>

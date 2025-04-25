@@ -5,7 +5,7 @@ function Footer() {
     <footer className={`${style.footer} d-flex jc-c`}>
       <p>
         Используемые технологии: Vite, React, Sass, CSS module, React Router,
-        React Content Loader
+        React Content Loader, React Paginate.
       </p>
     </footer>
   );

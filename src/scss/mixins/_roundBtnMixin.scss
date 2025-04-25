@@ -1,0 +1,51 @@
+@mixin roundBtn {
+  border-radius: 100%;
+  border: 1px solid var(--color-orange);
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.2s linear;
+
+  a {
+    color: var(--color-orange);
+    font-weight: 600;
+  }
+
+  svg {
+    path {
+      fill: var(--color-orange);
+    }
+  }
+
+  &:hover {
+    background-color: var(--color-orange);
+
+    svg {
+      path {
+        fill: var(--color-white);
+      }
+    }
+
+    a {
+      color: var(--color-white);
+    }
+  }
+
+  &:active {
+    background-color: color-mix(in srgb, var(--color-orange), black 10%);
+    border: 1px solid color-mix(in srgb, var(--color-orange), black 10%);
+
+    svg {
+      path {
+        fill: var(--color-white);
+      }
+    }
+
+    a {
+      color: var(--color-white);
+    }
+  }
+}

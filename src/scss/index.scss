@@ -8,6 +8,9 @@
 // utilites
 @import "utilites/flex";
 
+// mixins
+@import "mixins/roundBtnMixin";
+
 * {
   box-sizing: border-box;
   color: var(--color-black);

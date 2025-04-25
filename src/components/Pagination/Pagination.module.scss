@@ -1,0 +1,100 @@
+@import "../../scss/mixins/roundBtnMixin";
+
+.pagination {
+  width: 50%;
+  margin: 0 auto;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
+
+  :global {
+    .selected {
+      a {
+        background-color: var(--color-orange);
+        color: var(--color-white);
+
+        &:hover {
+          background-color: color-mix(in srgb, var(--color-orange), black 10%);
+          border: 1px solid color-mix(in srgb, var(--color-orange), black 10%);
+
+          svg {
+            path {
+              stroke: var(--color-white);
+              fill: var(--color-orange);
+            }
+          }
+        }
+
+        &:active {
+          background-color: color-mix(in srgb, var(--color-orange), black 15%);
+          border: 1px solid color-mix(in srgb, var(--color-orange), black 15%);
+
+          svg {
+            path {
+              fill: var(--color-white);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  li {
+    a {
+      border-radius: 100%;
+      border: 1px solid var(--color-orange);
+      width: 3.2rem;
+      height: 3.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      cursor: pointer;
+
+      transition: all 0.2s linear;
+
+      color: var(--color-orange);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    svg {
+      width: 0.8rem;
+      height: 1.4rem;
+
+      path {
+        stroke: var(--color-orange);
+      }
+    }
+
+    &:hover {
+      svg {
+        path {
+          stroke: var(--color-white);
+        }
+      }
+
+      a {
+        background-color: var(--color-orange);
+        color: var(--color-white);
+      }
+    }
+
+    &:active {
+      svg {
+        path {
+          stroke: var(--color-white);
+        }
+      }
+
+      a {
+        background-color: color-mix(in srgb, var(--color-orange), black 10%);
+        border: 1px solid color-mix(in srgb, var(--color-orange), black 10%);
+        color: var(--color-white);
+      }
+    }
+  }
+}
