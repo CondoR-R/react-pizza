@@ -41,6 +41,7 @@ function Main() {
     setSearchValue(e.target.value);
 
     if (location.pathname === "pizzas/all") return;
+    setCategory("");
     navigate("/pizzas/all");
   };
 
