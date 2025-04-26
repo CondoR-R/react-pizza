@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { useLocation, useSearchParams } from "react-router-dom";
+
+import { setFilters } from "../../redux/slices/filterSlice";
 
 import PizzaBlock from "../../components/PizzaBlock/PizzaBlock";
 import Skeleton from "../../components/PizzaBlock/Skeleton";
@@ -31,17 +34,41 @@ function Main() {
   const { category, sortOrder, sortBy, searchValueForQuerry, currentPage } =
     useSelector((state) => state.filter);
 
+  const dispatch = useDispatch();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+
   // колличество пицц на странице
   const pageLimit = 8;
 
-  // запросы к серверу
+  // загружаем параметры из URL
+  useEffect(() => {
+    if (location.search) {
+      const pathCategory = location.pathname.split("/")[2];
+      const filters = searchParams.get("search")
+        ? {
+            searchValueForQuerry: searchParams.get("search"),
+            searchValue: searchParams.get("search"),
+          }
+        : {
+            currentPage: searchParams.get("currentPage") || 1,
+            sortBy: searchParams.get("sortBy") || "rating",
+            sortOrder: searchParams.get("order") || "desc",
+            category:
+              pathCategory && pathCategory !== "all" ? pathCategory : "",
+          };
+      dispatch(setFilters(filters));
+    }
+  }, []);
+
+  // запрос с учетом текущих фильтров
   useEffect(() => {
     setIsLoading(true);
     setError(null);
+
     (async () => {
       try {
-        /* строка запроса или поиск или сортировка, тк mockapi не умеет работать 
-          с 2 сразу */
         const querryString = searchValueForQuerry
           ? `search=${searchValueForQuerry}`
           : `sortBy=${sortBy}&order=${sortOrder}&categories=${category}`;
@@ -49,10 +76,6 @@ function Main() {
         const pizzasRespons = await axios.get(
           `${URL}/items?limit=${pageLimit}&page=${currentPage}&${querryString}`
         );
-
-        if (pizzasRespons.status !== 200) {
-          throw new Error("Ошибка при попытке соединиться с сервером!");
-        }
 
         setPizzas(pizzasRespons.data);
       } catch (err) {
@@ -62,6 +85,18 @@ function Main() {
         setIsLoading(false);
       }
     })();
+  }, [category, sortBy, sortOrder, searchValueForQuerry, currentPage]);
+
+  // Обновляем URL при изменении фильтров
+  useEffect(() => {
+    const querryString = searchValueForQuerry
+      ? { search: searchValueForQuerry }
+      : {
+          sortBy,
+          order: sortOrder,
+          currentPage,
+        };
+    setSearchParams(querryString);
   }, [category, sortBy, sortOrder, searchValueForQuerry, currentPage]);
 
   const renderContent = () => {
