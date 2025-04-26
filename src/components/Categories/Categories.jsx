@@ -1,10 +1,11 @@
 import { useDispatch } from "react-redux";
 import { changeCategory } from "../../redux/slices/filterSlice";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import style from "./Categories.module.scss";
 import "./active.scss";
+import { useEffect } from "react";
 
 // меню с категориями
 function Categories() {
@@ -18,6 +19,15 @@ function Categories() {
     { type: "Острые", path: "sharp" },
     // { type: "Закрытые", path: "closed" },
   ];
+
+  // если путь не совпадает с категориями идет перенаправление на notFound
+  const location = useLocation();
+  const navigate = useNavigate();
+  if (
+    !categories.some(({ path }) => path === location.pathname.split("/")[2])
+  ) {
+    navigate("*");
+  }
 
   return (
     <ul className={`${style.categories} d-flex`}>

@@ -74,8 +74,6 @@ function Main() {
     );
   };
 
-  console.log(error, searchValueForQuerry);
-
   const renderError = () => {
     return (
       <InfoBlock
