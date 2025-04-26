@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { changeSortBy, togleSortOrder } from "../../redux/slices/filterSlice";
@@ -12,6 +12,8 @@ function Sort() {
 
   const sortOrder = useSelector((state) => state.filter.sortOrder);
   const sortBy = useSelector((state) => state.filter.sortBy);
+
+  const sortRef = useRef();
 
   const dispatch = useDispatch();
 
@@ -34,8 +36,22 @@ function Sort() {
     setIsOpened(false);
   };
 
+  useEffect(() => {
+    const onClickOutSide = (e) => {
+      if (sortRef.current && !sortRef.current.contains(event.target)) {
+        setIsOpened(false);
+      }
+    };
+
+    document.body.addEventListener("click", onClickOutSide);
+
+    return () => {
+      document.body.removeEventListener("click", onClickOutSide);
+    };
+  }, [isOpened]);
+
   return (
-    <div className={style.sort}>
+    <div className={style.sort} ref={sortRef}>
       {isOpened && (
         <div className={style.drawer}>
           <ul>
