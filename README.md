@@ -18,6 +18,8 @@
 - React Content Loader
 - React Paginate
 - Redux Toolkit
+- axios
+- lodash
 
 ## Использование
 
@@ -74,3 +76,11 @@ npm run dev
 - Добавлена пагинация
 - Добавление библиотеки Redux Toolkit
 - Создания слайса и редюсеров filter (поиск, сортировка, категории и пагинация)
+
+### 26.04.2024
+
+- Убрал дублирование при вызове useSelector
+- fetch заменен на axios
+- Добавлен фокус на input поиска при очистке (useRef)
+- С помощью lodash и useCallback добавлен debounce для запроса на сервер при поиске
+- Настроены изменения состояний filter при переходе по Link
