@@ -64,6 +64,11 @@ const filterSlice = createSlice({
   },
 });
 
+export const selectFilter =
+  (filterItem = "") =>
+  (state) =>
+    filterItem ? state.filter[filterItem] : state.filter;
+
 export const {
   changeCategory,
   togleSortOrder,

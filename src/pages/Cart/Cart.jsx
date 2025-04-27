@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 import { clearFilterState } from "../../redux/slices/filterSlice";
+import { clearCart, selectCart } from "../../redux/slices/cartSlice";
 
 import HorizontalLine from "../../components/HorizontalLine/HorizontalLine";
 import Btn from "../../components/Btn/Btn";
@@ -15,11 +17,10 @@ import BackIcon from "../../components/Icons/BackIcon";
 import style from "./Cart.module.scss";
 
 import emptyCartUrl from "../../assets/img/emptyCart.png";
-import { clearCart } from "../../redux/slices/cartSlice";
 
 // страница коризины
 function Cart() {
-  const { totalPrice, totalCount, cart } = useSelector((state) => state.cart);
+  const { totalPrice, totalCount, cart } = useSelector(selectCart());
 
   const navigate = useNavigate();
 
@@ -52,10 +53,10 @@ function Cart() {
           </div>
           <div className={style.cartItems}>
             {cart.map((item) => (
-              <>
+              <React.Fragment key={item.id}>
                 <HorizontalLine className={style.mb} />
                 <CartItem className={style.mb} item={item} />
-              </>
+              </React.Fragment>
             ))}
           </div>
           <div className={style.footer}>

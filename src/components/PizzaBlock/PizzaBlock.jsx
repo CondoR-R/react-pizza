@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addItem } from "../../redux/slices/cartSlice";
+import { addItem, selectCart } from "../../redux/slices/cartSlice";
 
 import Btn from "../Btn/Btn";
 import AddIcon from "../Icons/AddIcon";
@@ -12,7 +12,7 @@ import style from "./PizzaBlock.module.scss";
 // карточка пиццы
 function PizzaBlock({ pizza }) {
   const { id, imgUrl, name, dough, price } = pizza;
-  const cartItems = useSelector((state) => state.cart.cart).filter(
+  const cartItems = useSelector(selectCart("cart")).filter(
     (item) => item.itemId === id
   );
   const cartCount = cartItems.length

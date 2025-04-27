@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useSearchParams } from "react-router-dom";
 
-import { setFilters } from "../../redux/slices/filterSlice";
+import { selectFilter, setFilters } from "../../redux/slices/filterSlice";
+import { fetchPizzas, selectPizza } from "../../redux/slices/pizzaSlice";
 
 import PizzaBlock from "../../components/PizzaBlock/PizzaBlock";
 import Skeleton from "../../components/PizzaBlock/Skeleton";
@@ -14,15 +15,16 @@ import InfoBlock from "../../components/InfoBlock/InfoBlock";
 
 import style from "./Main.module.scss";
 
-import URL from "../../URL";
 import empryPizza from "../../assets/img/pizza.avif";
-import { fetchPizzas } from "../../redux/slices/pizzaSlice";
 
 // главная страница
 function Main() {
+  // filterSlice
   const { category, sortOrder, sortBy, searchValueForQuerry, currentPage } =
-    useSelector((state) => state.filter);
-  const { pizzas, isLoading, error } = useSelector((state) => state.pizza);
+    useSelector(selectFilter());
+
+  // pizzaSlice
+  const { pizzas, isLoading, error } = useSelector(selectPizza());
 
   const dispatch = useDispatch();
 

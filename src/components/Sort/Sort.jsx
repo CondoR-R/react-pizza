@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { changeSortBy, togleSortOrder } from "../../redux/slices/filterSlice";
+import {
+  changeSortBy,
+  selectFilter,
+  togleSortOrder,
+} from "../../redux/slices/filterSlice";
 
 import style from "./Sort.module.scss";
 
@@ -10,8 +14,7 @@ function Sort() {
   // статус открыт/закрыт
   const [isOpened, setIsOpened] = useState(false);
 
-  const sortOrder = useSelector((state) => state.filter.sortOrder);
-  const sortBy = useSelector((state) => state.filter.sortBy);
+  const { sortOrder, sortBy } = useSelector(selectFilter());
 
   const sortRef = useRef();
 

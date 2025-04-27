@@ -43,4 +43,9 @@ const pizzaSlice = createSlice({
   },
 });
 
+export const selectPizza =
+  (pizzaItem = "") =>
+  (state) =>
+    pizzaItem ? state.pizza[pizzaItem] : state.pizza;
+
 export default pizzaSlice.reducer;

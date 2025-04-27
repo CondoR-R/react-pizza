@@ -10,10 +10,11 @@ import CartIcon from "../Icons/CartIcon";
 import style from "./Header.module.scss";
 
 import logo from "../../assets/img/logo.svg";
+import { selectCart } from "../../redux/slices/cartSlice";
 
 // шапка сайта
 function Header() {
-  const { totalCount, totalPrice } = useSelector((state) => state.cart);
+  const { totalCount, totalPrice } = useSelector(selectCart());
 
   const dispatch = useDispatch();
 
