@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { clearFilterState } from "../../redux/slices/filterSlice";
@@ -17,6 +17,7 @@ function Header() {
   const { totalCount, totalPrice } = useSelector(selectCart());
 
   const dispatch = useDispatch();
+  const location = useLocation();
 
   return (
     <header className={`${style.header} d-flex jc-sb`}>
@@ -34,22 +35,24 @@ function Header() {
         </div>
       </Link>
 
-      <div className={style.rightSide}>
-        <Link to="/cart" className={style.link}>
-          <Btn>
-            {totalCount > 0 ? (
-              <>
-                <span>{totalPrice} руб.</span>
-                <span className={style.verticalLine}></span>
-                <CartIcon width="18" height="18" />
-                <span>{totalCount}</span>
-              </>
-            ) : (
-              "Корзина"
-            )}
-          </Btn>
-        </Link>
-      </div>
+      {location.pathname !== "/cart" && (
+        <div className={style.rightSide}>
+          <Link to="/cart" className={style.link}>
+            <Btn>
+              {totalCount > 0 ? (
+                <>
+                  <span>{totalPrice} руб.</span>
+                  <span className={style.verticalLine}></span>
+                  <CartIcon width="18" height="18" />
+                  <span>{totalCount}</span>
+                </>
+              ) : (
+                "Корзина"
+              )}
+            </Btn>
+          </Link>
+        </div>
+      )}
     </header>
   );
 }
