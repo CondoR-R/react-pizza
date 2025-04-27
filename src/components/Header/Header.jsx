@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { clearFilterState } from "../../redux/slices/filterSlice";
+import { selectCart } from "../../redux/slices/cartSlice";
 
 import Btn from "../Btn/Btn";
 
@@ -10,7 +11,6 @@ import CartIcon from "../Icons/CartIcon";
 import style from "./Header.module.scss";
 
 import logo from "../../assets/img/logo.svg";
-import { selectCart } from "../../redux/slices/cartSlice";
 
 // шапка сайта
 function Header() {

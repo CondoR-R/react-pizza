@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { clearFilterState } from "../../redux/slices/filterSlice";
 
 import Btn from "../Btn/Btn";
 
 import style from "./InfoBlock.module.scss";
-import { useDispatch } from "react-redux";
-import { clearFilterState } from "../../redux/slices/filterSlice";
 
 // блок с информацией для пустой корзины и Not found page
 function InfoBlock({

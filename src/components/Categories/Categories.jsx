@@ -5,7 +5,6 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import style from "./Categories.module.scss";
 import "./active.scss";
-import { useEffect } from "react";
 
 // меню с категориями
 function Categories() {
