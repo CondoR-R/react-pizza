@@ -37,16 +37,16 @@ function Sort() {
   };
 
   useEffect(() => {
-    const onClickOutSide = (e) => {
+    const handleClickOutside = (e) => {
       if (sortRef.current && !sortRef.current.contains(event.target)) {
         setIsOpened(false);
       }
     };
 
-    document.body.addEventListener("click", onClickOutSide);
+    document.body.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.body.removeEventListener("click", onClickOutSide);
+      document.body.removeEventListener("click", handleClickOutside);
     };
   }, [isOpened]);
 

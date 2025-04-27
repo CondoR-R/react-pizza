@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { addItem } from "../../redux/slices/cartSlice";
 
 import Btn from "../Btn/Btn";
 import AddIcon from "../Icons/AddIcon";
@@ -7,10 +10,16 @@ import CartIcon from "../Icons/CartIcon";
 import style from "./PizzaBlock.module.scss";
 
 // карточка пиццы
-function PizzaBlock({ pizza, cart = 0 }) {
-  const { id, imgUrl, name, dough, price, categories, rating } = pizza;
+function PizzaBlock({ pizza }) {
+  const { id, imgUrl, name, dough, price } = pizza;
+  const cartItems = useSelector((state) => state.cart.cart).filter(
+    (item) => item.itemId === id
+  );
+  const cartCount = cartItems.length
+    ? cartItems.reduce((sum, item) => item.count + sum, 0)
+    : 0;
 
-  // состояния
+  const dispatch = useDispatch();
 
   // тесто
   const [doughType, setDoughType] = useState(
@@ -20,7 +29,11 @@ function PizzaBlock({ pizza, cart = 0 }) {
   // размер
   const [sizeType, setSizeType] = useState(0);
 
-  const sizes = [26, 30, 40];
+  const sizes = [
+    { text: "small", number: 26 },
+    { text: "medium", number: 30 },
+    { text: "big", number: 40 },
+  ];
 
   // обработка событий
 
@@ -32,6 +45,21 @@ function PizzaBlock({ pizza, cart = 0 }) {
   // выбор размера
   const onClickSizeType = (size) => () => {
     setSizeType(size);
+  };
+
+  // добавление в корзину
+  const onClickAddToCart = () => {
+    const size = sizes.find((_, i) => i === sizeType);
+    const newItem = {
+      itemId: id,
+      name,
+      imgUrl,
+      doughType: doughType ? "традиционное" : "тонкое",
+      size: size.number,
+      price: price[size.text],
+    };
+
+    dispatch(addItem(newItem));
   };
 
   return (
@@ -68,20 +96,21 @@ function PizzaBlock({ pizza, cart = 0 }) {
               onClick={onClickSizeType(i)}
               className={sizeType === i ? style.activeBtn : ""}
             >
-              {size} см.
+              {size.number} см.
             </button>
           ))}
         </div>
       </div>
       <div className={`${style.cardBottom} d-flex jc-sb ai-c`}>
         <span className={style.span}>от {price.small} руб.</span>
-        <Btn isWhite={cart !== 0}>
+        <Btn isWhite={cartCount !== 0} onClick={onClickAddToCart}>
           <AddIcon width="12" height="12" />
-          {cart === 0 && <span>Добавить</span>}
-          {cart !== 0 && (
+          {cartCount === 0 ? (
+            <span>Добавить</span>
+          ) : (
             <>
               <CartIcon width="18" height="18" />
-              <span className={style.cartCount}>{cart}</span>
+              <span className={style.cartCount}>{cartCount}</span>
             </>
           )}
         </Btn>

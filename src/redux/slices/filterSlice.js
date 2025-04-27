@@ -9,7 +9,8 @@ const initialState = {
   currentPage: 1,
 };
 
-export const filterSlice = createSlice({
+// слайс отвечает за категории, сортировку и страницы
+const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {

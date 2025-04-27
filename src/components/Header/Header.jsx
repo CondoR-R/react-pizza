@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { clearFilterState } from "../../redux/slices/filterSlice";
 
 import Btn from "../Btn/Btn";
 
@@ -7,11 +10,11 @@ import CartIcon from "../Icons/CartIcon";
 import style from "./Header.module.scss";
 
 import logo from "../../assets/img/logo.svg";
-import { useDispatch } from "react-redux";
-import { clearFilterState } from "../../redux/slices/filterSlice";
 
 // шапка сайта
 function Header() {
+  const { totalCount, totalPrice } = useSelector((state) => state.cart);
+
   const dispatch = useDispatch();
 
   return (
@@ -33,10 +36,16 @@ function Header() {
       <div className={style.rightSide}>
         <Link to="/cart" className={style.link}>
           <Btn>
-            <span>520 руб.</span>
-            <span className={style.verticalLine}></span>
-            <CartIcon width="18" height="18" />
-            <span>4</span>
+            {totalCount > 0 ? (
+              <>
+                <span>{totalPrice} руб.</span>
+                <span className={style.verticalLine}></span>
+                <CartIcon width="18" height="18" />
+                <span>{totalCount}</span>
+              </>
+            ) : (
+              "Корзина"
+            )}
           </Btn>
         </Link>
       </div>

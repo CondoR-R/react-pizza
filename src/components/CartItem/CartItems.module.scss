@@ -1,12 +1,9 @@
 .cartItemBox {
-  div {
-    flex: 0;
-  }
-
   .pizza {
     display: flex;
     gap: 1.5rem;
     align-items: center;
+    width: 30rem;
 
     img {
       width: 8rem;
@@ -28,8 +25,8 @@
   .count {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1.2rem;
+    justify-content: space-between;
+    width: 10rem;
   }
 
   .price {
@@ -37,5 +34,6 @@
     font-weight: 600;
     display: flex;
     justify-content: center;
+    width: 15rem;
   }
 }
