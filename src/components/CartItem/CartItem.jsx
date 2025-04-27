@@ -21,6 +21,13 @@ function CartItem({ className, item }) {
   };
 
   const onClickMinusOne = () => {
+    if (
+      count === 1 &&
+      !window.confirm("Вы уверены, что хотите удалить товар из корзины?")
+    ) {
+      return;
+    }
+
     dispatch(decrement(id));
   };
 

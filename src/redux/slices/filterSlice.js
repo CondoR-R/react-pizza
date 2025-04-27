@@ -55,6 +55,7 @@ const filterSlice = createSlice({
       state.sortOrder = action.payload.sortOrder || "desc";
       state.category = action.payload.category || "";
       state.currentPage = +action.payload.currentPage || 1;
+
       if (action.payload?.searchValueForQuerry) {
         state.searchValueForQuerry = action.payload.searchValueForQuerry;
         state.searchValue = action.payload.searchValueForQuerry;

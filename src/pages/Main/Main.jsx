@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 import { useLocation, useSearchParams } from "react-router-dom";
 
 import { setFilters } from "../../redux/slices/filterSlice";
@@ -17,22 +16,13 @@ import style from "./Main.module.scss";
 
 import URL from "../../URL";
 import empryPizza from "../../assets/img/pizza.avif";
+import { fetchPizzas } from "../../redux/slices/pizzaSlice";
 
 // главная страница
 function Main() {
-  // пиццы с сервера и статус загрузки
-  const [pizzas, setPizzas] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  // состояния из хранилища filter
-  // const category = useSelector((state) => state.filter.category);
-  // const sortOrder = useSelector((state) => state.filter.sortOrder);
-  // const sortBy = useSelector((state) => state.filter.sortBy);
-  // const searchValue = useSelector((state) => state.filter.searchValue);
-  // const currentPage = useSelector((state) => state.filter.currentPage);
   const { category, sortOrder, sortBy, searchValueForQuerry, currentPage } =
     useSelector((state) => state.filter);
+  const { pizzas, isLoading, error } = useSelector((state) => state.pizza);
 
   const dispatch = useDispatch();
 
@@ -64,27 +54,11 @@ function Main() {
 
   // запрос с учетом текущих фильтров
   useEffect(() => {
-    setIsLoading(true);
-    setError(null);
+    const querryString = searchValueForQuerry
+      ? `search=${searchValueForQuerry}`
+      : `sortBy=${sortBy}&order=${sortOrder}&categories=${category}`;
 
-    (async () => {
-      try {
-        const querryString = searchValueForQuerry
-          ? `search=${searchValueForQuerry}`
-          : `sortBy=${sortBy}&order=${sortOrder}&categories=${category}`;
-
-        const pizzasRespons = await axios.get(
-          `${URL}/items?limit=${pageLimit}&page=${currentPage}&${querryString}`
-        );
-
-        setPizzas(pizzasRespons.data);
-      } catch (err) {
-        setError(err);
-        console.log(err);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
+    dispatch(fetchPizzas({ pageLimit, currentPage, querryString }));
   }, [category, sortBy, sortOrder, searchValueForQuerry, currentPage]);
 
   // Обновляем URL при изменении фильтров
@@ -121,7 +95,7 @@ function Main() {
             : "Не смогли соединиться с сервером, попробуйте позже."
         }
         imgUrl={empryPizza}
-        onClick={() => setError(null)}
+        // onClick={() => setError(null)}
       />
     );
   };
@@ -137,7 +111,6 @@ function Main() {
           <h1>Все пиццы</h1>
           <Search />
         </div>
-
         {error ? renderError() : renderContent()}
         <Pagination />
       </div>

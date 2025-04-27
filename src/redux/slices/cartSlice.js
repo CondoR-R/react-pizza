@@ -59,17 +59,14 @@ const cartSlice = createSlice({
     increment: (state, action) => {
       const cartItem = findCartItem(state.cart, action.payload);
       cartItem.count++;
+
       state.totalPrice = updateTotalPrice(state.cart);
       state.totalCount = updateTotalCount(state.cart);
     },
     decrement: (state, action) => {
       const cartItem = findCartItem(state.cart, action.payload);
       if (!(cartItem.count - 1)) {
-        if (
-          window.confirm("Вы уверены, что хотите удалить товар из корзины?")
-        ) {
-          state.cart = state.cart.filter((item) => item.id !== cartItem.id);
-        }
+        state.cart = state.cart.filter((item) => item.id !== cartItem.id);
       } else {
         cartItem.count--;
       }
