@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useParams, useSearchParams } from "react-router-dom";
 
 import { selectFilter, setFilters } from "../../redux/slices/filterSlice";
 import { fetchPizzas, selectPizza } from "../../redux/slices/pizzaSlice";
@@ -30,6 +30,7 @@ function Main() {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
+  const params = useParams();
 
   // колличество пицц на странице
   const pageLimit = 8;
@@ -37,7 +38,7 @@ function Main() {
   // загружаем параметры из URL
   useEffect(() => {
     if (location.search) {
-      const pathCategory = location.pathname.split("/")[2];
+      const pathCategory = params.category;
       const filters = searchParams.get("search")
         ? {
             searchValueForQuerry: searchParams.get("search"),
@@ -73,7 +74,7 @@ function Main() {
           currentPage,
         };
     setSearchParams(querryString);
-  }, [category, sortBy, sortOrder, searchValueForQuerry, currentPage]);
+  }, [sortBy, sortOrder, searchValueForQuerry, currentPage]);
 
   const renderContent = () => {
     return (
