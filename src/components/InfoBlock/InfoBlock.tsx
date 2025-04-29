@@ -10,9 +10,9 @@ import style from "./InfoBlock.module.scss";
 
 type InfoBlockProps = {
   title: string;
-  text: string;
+  text?: string;
   imgUrl: string;
-  className: string;
+  className?: string;
   dontRenderBtn?: boolean;
 };
 

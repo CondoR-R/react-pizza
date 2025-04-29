@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addItem, selectCart } from "../../redux/slices/cartSlice";
+import { addItem, selectCart } from "../../redux/slices/cartSlice.ts";
 
 import Btn from "../Btn/Btn.tsx";
 

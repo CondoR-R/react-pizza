@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams, useSearchParams } from "react-router-dom";
 
@@ -18,7 +18,7 @@ import style from "./Main.module.scss";
 import empryPizza from "../../assets/img/pizza.avif";
 
 // главная страница
-function Main() {
+const Main: React.FC = () => {
   // filterSlice
   const { category, sortOrder, sortBy, searchValueForQuerry, currentPage } =
     useSelector(selectFilter());
@@ -98,7 +98,6 @@ function Main() {
             : "Не смогли соединиться с сервером, попробуйте позже."
         }
         imgUrl={empryPizza}
-        // onClick={() => setError(null)}
       />
     );
   };
@@ -119,6 +118,6 @@ function Main() {
       </div>
     </div>
   );
-}
+};
 
 export default Main;

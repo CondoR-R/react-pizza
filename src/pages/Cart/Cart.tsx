@@ -19,7 +19,7 @@ import style from "./Cart.module.scss";
 import emptyCartUrl from "../../assets/img/emptyCart.png";
 
 // страница коризины
-function Cart() {
+const Cart: React.FC = () => {
   const { totalPrice, totalCount, cart } = useSelector(selectCart());
 
   const navigate = useNavigate();
@@ -94,6 +94,6 @@ function Cart() {
   };
 
   return totalCount > 0 ? renderCart() : renderEmptyCart();
-}
+};
 
 export default Cart;
