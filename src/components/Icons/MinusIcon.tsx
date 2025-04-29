@@ -1,5 +1,7 @@
+import React from "react";
+
 // минус
-function MinusIcon() {
+const MinusIcon: React.FC = () => {
   return (
     <svg
       width="10"
@@ -14,6 +16,6 @@ function MinusIcon() {
       />
     </svg>
   );
-}
+};
 
 export default MinusIcon;

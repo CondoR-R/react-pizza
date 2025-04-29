@@ -1,7 +1,8 @@
+import React from "react";
 import style from "./Footer.module.scss";
 
 // подвал сайта
-function Footer() {
+const Footer: React.FC = () => {
   return (
     <footer className={`${style.footer} d-flex jc-c`}>
       <p>
@@ -10,6 +11,6 @@ function Footer() {
       </p>
     </footer>
   );
-}
+};
 
 export default Footer;

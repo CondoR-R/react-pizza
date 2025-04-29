@@ -1,16 +1,19 @@
 import { useDispatch } from "react-redux";
-import { changeCategory } from "../../redux/slices/filterSlice";
+import React from "react";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { changeCategory } from "../../redux/slices/filterSlice";
 
 import style from "./Categories.module.scss";
 import "./active.scss";
 
 // меню с категориями
-function Categories() {
+const Categories: React.FC = () => {
   const dispatch = useDispatch();
 
-  const categories = [
+  type Category = { type: string; path: string };
+
+  const categories: Category[] = [
     { type: "Все", path: "all" },
     { type: "Мясные", path: "meat" },
     { type: "Вегатарианские", path: "vegetarian" },
@@ -20,11 +23,9 @@ function Categories() {
   ];
 
   // если путь не совпадает с категориями идет перенаправление на notFound
-  const location = useLocation();
   const navigate = useNavigate();
-  if (
-    !categories.some(({ path }) => path === location.pathname.split("/")[2])
-  ) {
+  const params = useParams();
+  if (!categories.some(({ path }) => path === params.category)) {
     navigate("*");
   }
 
@@ -43,6 +44,6 @@ function Categories() {
       ))}
     </ul>
   );
-}
+};
 
 export default Categories;

@@ -1,7 +1,14 @@
 import React from "react";
 
+type CartIconProps = {
+  className?: string;
+  width: string;
+  height: string;
+  color?: string;
+};
+
 // корзина
-const CartIcon = ({
+const CartIcon: React.FC<CartIconProps> = ({
   className = "",
   width = "",
   height = "",

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -10,17 +10,22 @@ import {
 import style from "./Sort.module.scss";
 
 // блок сортировки
-function Sort() {
+const Sort: React.FC = () => {
   // статус открыт/закрыт
-  const [isOpened, setIsOpened] = useState(false);
+  const [isOpened, setIsOpened] = useState<boolean>(false);
 
   const { sortOrder, sortBy } = useSelector(selectFilter());
 
-  const sortRef = useRef();
+  const sortRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useDispatch();
 
-  const sortTypesArr = [
+  type SortTypeItem = {
+    name: string;
+    type: string;
+  };
+
+  const sortTypesArr: SortTypeItem[] = [
     { name: "популярности", type: "rating" },
     { name: "цене", type: "minPrice" },
     { name: "алфавиту", type: "name" },
@@ -34,14 +39,14 @@ function Sort() {
   };
 
   // выбор типа сортировки
-  const onClickChangeSortBy = (type) => () => {
+  const onClickChangeSortBy = (type: string) => () => {
     dispatch(changeSortBy(type));
     setIsOpened(false);
   };
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (sortRef.current && !sortRef.current.contains(event.target)) {
+      if (sortRef.current && !sortRef.current.contains(e.target)) {
         setIsOpened(false);
       }
     };
@@ -94,11 +99,11 @@ function Sort() {
         </button>
         <span>Сортировка по:</span>
         <button className={style.sortType} onClick={onClickTogleType}>
-          {sortTypesArr.find((t) => t.type === sortBy).name}
+          {sortTypesArr.find((t) => t.type === sortBy)?.name}
         </button>
       </div>
     </div>
   );
-}
+};
 
 export default Sort;

@@ -1,36 +1,46 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addItem, selectCart } from "../../redux/slices/cartSlice";
 
-import Btn from "../Btn/Btn";
+import Btn from "../Btn/Btn.tsx";
 
 import AddIcon from "../Icons/AddIcon.tsx";
-import CartIcon from "../Icons/CartIcon";
+import CartIcon from "../Icons/CartIcon.tsx";
 
 import style from "./PizzaBlock.module.scss";
 
+type Pizza = {
+  id: string;
+  imgUrl: string;
+  name: string;
+  dough: { subtle: boolean; traditioal: boolean };
+  price: { small: number; medium: number; big: number };
+};
+
+type PizzaBlockProps = { pizza: Pizza };
+
 // карточка пиццы
-function PizzaBlock({ pizza }) {
+const PizzaBlock: React.FC<PizzaBlockProps> = ({ pizza }) => {
   const { id, imgUrl, name, dough, price } = pizza;
   const cartItems = useSelector(selectCart("cart")).filter(
     (item) => item.itemId === id
   );
   const cartCount = cartItems.length
-    ? cartItems.reduce((sum, item) => item.count + sum, 0)
+    ? cartItems.reduce((sum: number, item) => item.count + sum, 0)
     : 0;
 
   const dispatch = useDispatch();
 
   // тесто
-  const [doughType, setDoughType] = useState(
-    dough.subtle ? 0 : dough.traditioal ? 1 : null
-  );
+  const [doughType, setDoughType] = useState<0 | 1>(dough.subtle ? 0 : 1);
 
   // размер
-  const [sizeType, setSizeType] = useState(0);
 
-  const sizes = [
+  type Size = { text: string; number: number };
+  const [sizeType, setSizeType] = useState<number>(0);
+
+  const sizes: Size[] = [
     { text: "small", number: 26 },
     { text: "medium", number: 30 },
     { text: "big", number: 40 },
@@ -39,25 +49,27 @@ function PizzaBlock({ pizza }) {
   // обработка событий
 
   // выбор типа теста
-  const onClickDoughType = (type) => () => {
+  const onClickDoughType = (type: 0 | 1) => () => {
     setDoughType(type);
   };
 
   // выбор размера
-  const onClickSizeType = (size) => () => {
+  const onClickSizeType = (size: number) => () => {
     setSizeType(size);
   };
 
   // добавление в корзину
   const onClickAddToCart = () => {
     const size = sizes.find((_, i) => i === sizeType);
+    if (!size) return;
+
     const newItem = {
       itemId: id,
       name,
       imgUrl,
       doughType: doughType ? "традиционное" : "тонкое",
       size: size.number,
-      price: price[size.text],
+      price: price[size.text], // ?????
     };
 
     dispatch(addItem(newItem));
@@ -118,6 +130,6 @@ function PizzaBlock({ pizza }) {
       </div>
     </div>
   );
-}
+};
 
 export default PizzaBlock;

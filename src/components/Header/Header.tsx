@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 
 import { clearFilterState } from "../../redux/slices/filterSlice";
 import { selectCart } from "../../redux/slices/cartSlice";
@@ -13,7 +14,7 @@ import style from "./Header.module.scss";
 import logo from "../../assets/img/logo.svg";
 
 // шапка сайта
-function Header() {
+const Header: React.FC = () => {
   const { totalCount, totalPrice } = useSelector(selectCart());
 
   const dispatch = useDispatch();
@@ -55,6 +56,6 @@ function Header() {
       )}
     </header>
   );
-}
+};
 
 export default Header;

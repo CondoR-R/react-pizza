@@ -1,7 +1,18 @@
+import React from "react";
 import style from "./RoundBtn.module.scss";
 
+type RoundBtnProps = {
+  children: any;
+  isGray?: boolean;
+  onClick?: any;
+};
+
 // кругла маленькая кнопка
-function RoundBtn({ children, isGray = false, onClick = () => {} }) {
+const RoundBtn: React.FC<RoundBtnProps> = ({
+  children,
+  isGray = false,
+  onClick = () => {},
+}) => {
   return (
     <button
       onClick={onClick}
@@ -10,6 +21,6 @@ function RoundBtn({ children, isGray = false, onClick = () => {} }) {
       {children}
     </button>
   );
-}
+};
 
 export default RoundBtn;

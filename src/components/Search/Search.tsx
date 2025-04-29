@@ -24,12 +24,12 @@ function Search() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   /* записываем в redux изменение searchValue только
     спустя время после последнего изменения инпута */
   const updateSearchValue = useCallback(
-    _.debounce((str) => {
+    _.debounce((str: string) => {
       dispatch(changeSearchValueForQuerry(str));
     }, 250),
     []
@@ -46,7 +46,9 @@ function Search() {
 
   const onClickClearInput = () => {
     dispatch(clearSearch());
-    inputRef.current.focus();
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
   return (

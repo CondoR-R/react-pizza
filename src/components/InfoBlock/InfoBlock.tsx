@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import React from "react";
 
 import { clearFilterState } from "../../redux/slices/filterSlice";
 
@@ -7,14 +8,22 @@ import Btn from "../Btn/Btn";
 
 import style from "./InfoBlock.module.scss";
 
+type InfoBlockProps = {
+  title: string;
+  text: string;
+  imgUrl: string;
+  className: string;
+  dontRenderBtn?: boolean;
+};
+
 // блок с информацией для пустой корзины и Not found page
-function InfoBlock({
+const InfoBlock: React.FC<InfoBlockProps> = ({
   title = "",
   text = "",
   imgUrl = "",
   className = "",
   dontRenderBtn = false,
-}) {
+}) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -40,6 +49,6 @@ function InfoBlock({
       </div>
     </div>
   );
-}
+};
 
 export default InfoBlock;

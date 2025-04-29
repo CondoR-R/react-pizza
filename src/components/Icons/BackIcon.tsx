@@ -1,5 +1,7 @@
+import React from "react";
+
 // стрелка назад
-function BackIcon() {
+const BackIcon: React.FC = () => {
   return (
     <svg
       width="8"
@@ -17,6 +19,6 @@ function BackIcon() {
       />
     </svg>
   );
-}
+};
 
 export default BackIcon;

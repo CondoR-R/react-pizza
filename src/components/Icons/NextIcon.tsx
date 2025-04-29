@@ -1,5 +1,7 @@
+import React from "react";
+
 // стрелка вперед
-function NextIcon() {
+const NextIcon: React.FC = () => {
   return (
     <svg
       width="8"
@@ -17,6 +19,6 @@ function NextIcon() {
       />
     </svg>
   );
-}
+};
 
 export default NextIcon;

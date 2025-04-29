@@ -1,5 +1,7 @@
+import React from "react";
+
 // корзина
-function CartIcons() {
+const CartIcons: React.FC = () => {
   return (
     <svg
       width="20"
@@ -38,6 +40,6 @@ function CartIcons() {
       />
     </svg>
   );
-}
+};
 
 export default CartIcons;

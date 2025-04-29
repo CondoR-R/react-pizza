@@ -1,7 +1,17 @@
 import React from "react";
 
+type AddIconProps = {
+  className?: string;
+  width: string;
+  height: string;
+};
+
 // плюс
-function AddIcon({ className = "", width = "", height = "" }) {
+const AddIcon: React.FC<AddIconProps> = ({
+  className = "",
+  width = "",
+  height = "",
+}) => {
   return (
     <svg
       className={className}
@@ -17,6 +27,6 @@ function AddIcon({ className = "", width = "", height = "" }) {
       />
     </svg>
   );
-}
+};
 
 export default AddIcon;

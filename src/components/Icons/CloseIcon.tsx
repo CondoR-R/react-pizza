@@ -1,5 +1,9 @@
+import React from "react";
+
+type CloseIconProps = { className?: string };
+
 // крестик
-function CloseIcon({ className = "" }) {
+const CloseIcon: React.FC<CloseIconProps> = ({ className = "" }) => {
   return (
     <svg
       className={className}
@@ -15,6 +19,6 @@ function CloseIcon({ className = "" }) {
       />
     </svg>
   );
-}
+};
 
 export default CloseIcon;

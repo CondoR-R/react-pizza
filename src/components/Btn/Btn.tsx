@@ -1,7 +1,18 @@
+import React from "react";
 import style from "./Btn.module.scss";
 
+type BtnProps = {
+  children: any;
+  onClick?: any;
+  className?: string;
+  isWhite?: boolean;
+  isBlack?: boolean;
+  isBigPad?: boolean;
+  isGrayBorder?: boolean;
+};
+
 // большие кнопки (добавить в корзину, корзина, вернуться назад и тп)
-function Btn({
+const Btn: React.FC<BtnProps> = ({
   children,
   onClick = () => {},
   className = "",
@@ -9,7 +20,7 @@ function Btn({
   isBlack = false,
   isBigPad = false,
   isGrayBorder = false,
-}) {
+}) => {
   return (
     <button
       onClick={onClick}
@@ -22,6 +33,6 @@ function Btn({
       {children}
     </button>
   );
-}
+};
 
 export default Btn;
