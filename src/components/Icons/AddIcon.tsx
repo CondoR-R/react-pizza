@@ -1,3 +1,5 @@
+import React from "react";
+
 // плюс
 function AddIcon({ className = "", width = "", height = "" }) {
   return (

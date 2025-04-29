@@ -1,10 +1,12 @@
+import React from "react";
+
 // корзина
-function CartIcon({
+const CartIcon = ({
   className = "",
   width = "",
   height = "",
   color = "white",
-}) {
+}) => {
   return (
     <svg
       className={className}
@@ -37,6 +39,6 @@ function CartIcon({
       />
     </svg>
   );
-}
+};
 
 export default CartIcon;

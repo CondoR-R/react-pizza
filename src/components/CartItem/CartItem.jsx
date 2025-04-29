@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 
 import { decrement, increment, removeItem } from "../../redux/slices/cartSlice";
 
-import AddIcon from "../Icons/AddIcon";
+import AddIcon from "../Icons/AddIcon.tsx";
 import CloseIcon from "../Icons/CloseIcon";
 import MinusIcon from "../Icons/MinusIcon";
 

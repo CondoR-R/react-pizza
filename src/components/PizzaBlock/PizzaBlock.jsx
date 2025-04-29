@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem, selectCart } from "../../redux/slices/cartSlice";
 
 import Btn from "../Btn/Btn";
-import AddIcon from "../Icons/AddIcon";
+
+import AddIcon from "../Icons/AddIcon.tsx";
 import CartIcon from "../Icons/CartIcon";
 
 import style from "./PizzaBlock.module.scss";
