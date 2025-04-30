@@ -45,8 +45,8 @@ const Sort: React.FC = () => {
   };
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (sortRef.current && !sortRef.current.contains(e.target)) {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (sortRef.current && !sortRef.current.contains(e.target as Node)) {
         setIsOpened(false);
       }
     };

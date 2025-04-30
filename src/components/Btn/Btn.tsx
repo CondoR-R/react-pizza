@@ -3,7 +3,7 @@ import style from "./Btn.module.scss";
 
 type BtnProps = {
   children: any;
-  onClick?: any;
+  onClick?: () => void;
   className?: string;
   isWhite?: boolean;
   isBlack?: boolean;

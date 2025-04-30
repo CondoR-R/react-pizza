@@ -36,7 +36,7 @@ function Search() {
   );
 
   // обработка событий
-  const onChangeSearch = (e) => {
+  const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(changeSearchValue(e.target.value));
     updateSearchValue(e.target.value);
 

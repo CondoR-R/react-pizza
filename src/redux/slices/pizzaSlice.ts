@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import URL from "../../URL.ts";
+import URL from "../../URL";
 
 const initialState = {
   pizzas: [],

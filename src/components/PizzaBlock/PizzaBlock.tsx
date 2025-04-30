@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addItem, selectCart } from "../../redux/slices/cartSlice.ts";
+import { addItem, selectCart } from "../../redux/slices/cartSlice";
 
 import Btn from "../Btn/Btn.tsx";
 
-import AddIcon from "../Icons/AddIcon.tsx";
-import CartIcon from "../Icons/CartIcon.tsx";
+import AddIcon from "../Icons/AddIcon";
+import CartIcon from "../Icons/CartIcon";
 
 import style from "./PizzaBlock.module.scss";
 

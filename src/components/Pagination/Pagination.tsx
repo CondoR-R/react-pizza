@@ -6,11 +6,14 @@ import NextIcon from "../Icons/NextIcon";
 
 import style from "./Pagination.module.scss";
 
-import { changeCurrentPage } from "../../redux/slices/filterSlice";
+import {
+  changeCurrentPage,
+  selectFilter,
+} from "../../redux/slices/filterSlice";
 
 // меню по страницам (снизу)
 function Pagination() {
-  const currentPage = useSelector((state) => state.filter.currentPage);
+  const currentPage = useSelector(selectFilter("currentPage"));
 
   const dispatch = useDispatch();
 

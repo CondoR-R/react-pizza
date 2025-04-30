@@ -4,7 +4,7 @@ import style from "./RoundBtn.module.scss";
 type RoundBtnProps = {
   children: any;
   isGray?: boolean;
-  onClick?: any;
+  onClick?: () => void;
 };
 
 // кругла маленькая кнопка
