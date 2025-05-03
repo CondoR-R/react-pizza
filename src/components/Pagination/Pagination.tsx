@@ -8,14 +8,15 @@ import style from "./Pagination.module.scss";
 
 import {
   changeCurrentPage,
-  selectFilter,
+  selectFilterStateItem,
 } from "../../redux/slices/filterSlice";
+import { useAppDispatch } from "../../redux/store";
 
 // меню по страницам (снизу)
 function Pagination() {
-  const currentPage = useSelector(selectFilter("currentPage"));
+  const currentPage = +useSelector(selectFilterStateItem("currentPage"));
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <ReactPaginate

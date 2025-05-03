@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import {
   changeSortBy,
-  selectFilter,
+  selectFilterState,
   togleSortOrder,
 } from "../../redux/slices/filterSlice";
 
@@ -14,7 +14,7 @@ const Sort: React.FC = () => {
   // статус открыт/закрыт
   const [isOpened, setIsOpened] = useState<boolean>(false);
 
-  const { sortOrder, sortBy } = useSelector(selectFilter());
+  const { sortOrder, sortBy } = useSelector(selectFilterState());
 
   const sortRef = useRef<HTMLDivElement>(null);
 

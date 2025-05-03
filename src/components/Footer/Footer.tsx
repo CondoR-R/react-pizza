@@ -7,7 +7,8 @@ const Footer: React.FC = () => {
     <footer className={`${style.footer} d-flex jc-c`}>
       <p>
         Используемые технологии: Vite, React, Sass, CSS module, React Router,
-        React Content Loader, React Paginate, Redux Toolkit, axios, lodash.
+        React Content Loader, React Paginate, Redux Toolkit, axios, lodash,
+        TypeScript.
       </p>
     </footer>
   );

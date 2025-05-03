@@ -1,9 +1,9 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 
 import { clearFilterState } from "../../redux/slices/filterSlice";
-import { clearCart, selectCart } from "../../redux/slices/cartSlice";
+import { clearCart, selectCartState } from "../../redux/slices/cartSlice";
 
 import HorizontalLine from "../../components/HorizontalLine/HorizontalLine";
 import Btn from "../../components/Btn/Btn";
@@ -17,14 +17,15 @@ import BackIcon from "../../components/Icons/BackIcon";
 import style from "./Cart.module.scss";
 
 import emptyCartUrl from "../../assets/img/emptyCart.png";
+import { useAppDispatch } from "../../redux/store";
 
 // страница коризины
 const Cart: React.FC = () => {
-  const { totalPrice, totalCount, cart } = useSelector(selectCart());
+  const { totalPrice, totalCount, cart } = useSelector(selectCartState());
 
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const onClickBack = () => {
     navigate("/");

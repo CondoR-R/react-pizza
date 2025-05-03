@@ -1,6 +1,10 @@
-import { useDispatch } from "react-redux";
-
-import { decrement, increment, removeItem } from "../../redux/slices/cartSlice";
+import {
+  CartItem as Item,
+  decrement,
+  increment,
+  removeItem,
+} from "../../redux/slices/cartSlice";
+import { useAppDispatch } from "../../redux/store";
 
 import AddIcon from "../Icons/AddIcon";
 import CloseIcon from "../Icons/CloseIcon";
@@ -10,15 +14,15 @@ import RoundBtn from "../RoundBtn/RoundBtn";
 
 import style from "./CartItems.module.scss";
 
-type Item = {
-  imgUrl: string;
-  name: string;
-  doughType: "тонкое" | "традиционное";
-  size: 26 | 30 | 40;
-  price: number;
-  count: number;
-  id: string;
-};
+// type Item = {
+//   imgUrl: string;
+//   name: string;
+//   doughType: "тонкое" | "традиционное";
+//   size: 26 | 30 | 40;
+//   price: number;
+//   count: number;
+//   id: string;
+// };
 
 type CartItemProps = {
   className: string;
@@ -29,7 +33,7 @@ type CartItemProps = {
 function CartItem({ className, item }: CartItemProps) {
   const { imgUrl, name, doughType, size, price, count, id } = item;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const onClickPlusOne = () => {
     dispatch(increment(id));

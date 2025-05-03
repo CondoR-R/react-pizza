@@ -7,18 +7,19 @@ import {
   changeSearchValue,
   clearSearch,
   changeSearchValueForQuerry,
-  selectFilter,
+  selectFilterStateItem,
 } from "../../redux/slices/filterSlice";
 
 import SearchIcon from "../Icons/SearchIcon";
 import CloseIcon from "../Icons/CloseIcon";
 
 import style from "./Search.module.scss";
+import { useAppDispatch } from "../../redux/store";
 
 // блок с поиском
 function Search() {
-  const searchValue = useSelector(selectFilter("searchValue"));
-  const dispatch = useDispatch();
+  const searchValue = useSelector(selectFilterStateItem("searchValue"));
+  const dispatch = useAppDispatch();
 
   // текущий путь и перенаправление при поиске
   const location = useLocation();

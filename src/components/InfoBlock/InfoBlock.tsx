@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import React from "react";
 
 import { clearFilterState } from "../../redux/slices/filterSlice";
@@ -7,6 +6,7 @@ import { clearFilterState } from "../../redux/slices/filterSlice";
 import Btn from "../Btn/Btn";
 
 import style from "./InfoBlock.module.scss";
+import { useAppDispatch } from "../../redux/store";
 
 type InfoBlockProps = {
   title: string;
@@ -26,7 +26,7 @@ const InfoBlock: React.FC<InfoBlockProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const onClickBtn = () => {
     navigate("/");

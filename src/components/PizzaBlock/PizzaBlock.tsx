@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addItem, selectCart } from "../../redux/slices/cartSlice";
+import {
+  addItem,
+  CartItem,
+  selectCartItems,
+} from "../../redux/slices/cartSlice";
 
 import Btn from "../Btn/Btn.tsx";
 
@@ -9,35 +13,37 @@ import AddIcon from "../Icons/AddIcon";
 import CartIcon from "../Icons/CartIcon";
 
 import style from "./PizzaBlock.module.scss";
+import { Pizza } from "../../redux/slices/pizzaSlice.ts";
+import { useAppDispatch } from "../../redux/store.ts";
 
-type Pizza = {
-  id: string;
-  imgUrl: string;
-  name: string;
-  dough: { subtle: boolean; traditioal: boolean };
-  price: { small: number; medium: number; big: number };
-};
+// type Pizza = {
+//   id: string;
+//   imgUrl: string;
+//   name: string;
+//   dough: { subtle: boolean; traditioal: boolean };
+//   price: { small: number; medium: number; big: number };
+// };
 
 type PizzaBlockProps = { pizza: Pizza };
 
 // карточка пиццы
 const PizzaBlock: React.FC<PizzaBlockProps> = ({ pizza }) => {
   const { id, imgUrl, name, dough, price } = pizza;
-  const cartItems = useSelector(selectCart("cart")).filter(
+  const cartItems = useSelector(selectCartItems()).filter(
     (item) => item.itemId === id
   );
   const cartCount = cartItems.length
     ? cartItems.reduce((sum: number, item) => item.count + sum, 0)
     : 0;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   // тесто
   const [doughType, setDoughType] = useState<0 | 1>(dough.subtle ? 0 : 1);
 
   // размер
 
-  type Size = { text: string; number: number };
+  type Size = { text: "small" | "medium" | "big"; number: number };
   const [sizeType, setSizeType] = useState<number>(0);
 
   const sizes: Size[] = [
@@ -63,13 +69,15 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({ pizza }) => {
     const size = sizes.find((_, i) => i === sizeType);
     if (!size) return;
 
-    const newItem = {
+    const newItem: CartItem = {
+      id: 0,
+      count: 0,
       itemId: id,
       name,
       imgUrl,
       doughType: doughType ? "традиционное" : "тонкое",
       size: size.number,
-      price: price[size.text], // ?????
+      price: price[size.text],
     };
 
     dispatch(addItem(newItem));

@@ -1,9 +1,19 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams, useSearchParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import {
+  URLSearchParamsInit,
+  useLocation,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 
-import { selectFilter, setFilters } from "../../redux/slices/filterSlice";
-import { fetchPizzas, selectPizza } from "../../redux/slices/pizzaSlice";
+import {
+  FilterSliceState,
+  selectFilterState,
+  setFilters,
+} from "../../redux/slices/filterSlice";
+import { fetchPizzas, selectPizzaState } from "../../redux/slices/pizzaSlice";
+import { useAppDispatch } from "../../redux/store";
 
 import PizzaBlock from "../../components/PizzaBlock/PizzaBlock";
 import Skeleton from "../../components/PizzaBlock/Skeleton";
@@ -21,12 +31,12 @@ import empryPizza from "../../assets/img/pizza.avif";
 const Main: React.FC = () => {
   // filterSlice
   const { category, sortOrder, sortBy, searchValueForQuerry, currentPage } =
-    useSelector(selectFilter());
+    useSelector(selectFilterState());
 
   // pizzaSlice
-  const { pizzas, isLoading, error } = useSelector(selectPizza());
+  const { pizzas, isLoading, error } = useSelector(selectPizzaState());
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
@@ -39,18 +49,25 @@ const Main: React.FC = () => {
   useEffect(() => {
     if (location.search) {
       const pathCategory = params.category;
-      const filters = searchParams.get("search")
+      const filters: FilterSliceState = searchParams.get("search")
         ? {
-            searchValueForQuerry: searchParams.get("search"),
-            searchValue: searchParams.get("search"),
+            searchValueForQuerry: searchParams.get("search") || "",
+            searchValue: searchParams.get("search") || "",
+            currentPage: 1,
+            category: "",
+            sortOrder: "desc",
+            sortBy: "rating",
           }
         : {
-            currentPage: searchParams.get("currentPage") || 1,
+            currentPage: Number(searchParams.get("currentPage")) || 1,
             sortBy: searchParams.get("sortBy") || "rating",
             sortOrder: searchParams.get("order") || "desc",
             category:
               pathCategory && pathCategory !== "all" ? pathCategory : "",
+            searchValueForQuerry: "",
+            searchValue: "",
           };
+
       dispatch(setFilters(filters));
     }
   }, []);
@@ -66,12 +83,12 @@ const Main: React.FC = () => {
 
   // Обновляем URL при изменении фильтров
   useEffect(() => {
-    const querryString = searchValueForQuerry
+    const querryString: URLSearchParamsInit = searchValueForQuerry
       ? { search: searchValueForQuerry }
       : {
-          sortBy,
+          sortBy: sortBy,
           order: sortOrder,
-          currentPage,
+          currentPage: String(currentPage),
         };
     setSearchParams(querryString);
   }, [sortBy, sortOrder, searchValueForQuerry, currentPage]);

@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import React from "react";
+import { useAppDispatch } from "../../redux/store";
 
 import { clearFilterState } from "../../redux/slices/filterSlice";
-import { selectCart } from "../../redux/slices/cartSlice";
+import { selectCartState } from "../../redux/slices/cartSlice";
 
 import Btn from "../Btn/Btn";
 
@@ -15,9 +16,9 @@ import logo from "../../assets/img/logo.svg";
 
 // шапка сайта
 const Header: React.FC = () => {
-  const { totalCount, totalPrice } = useSelector(selectCart());
+  const { totalCount, totalPrice } = useSelector(selectCartState());
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const location = useLocation();
 
   return (

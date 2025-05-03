@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../redux/store";
 import React from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 
@@ -9,7 +9,7 @@ import "./active.scss";
 
 // меню с категориями
 const Categories: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   type Category = { type: string; path: string };
 

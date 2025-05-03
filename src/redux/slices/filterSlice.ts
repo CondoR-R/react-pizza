@@ -1,6 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
-const initialState = {
+export interface FilterSliceState {
+  category: string;
+  sortOrder: string;
+  sortBy: string;
+  searchValue: string;
+  searchValueForQuerry: string;
+  currentPage: number;
+}
+
+const initialState: FilterSliceState = {
   category: "",
   sortOrder: "desc",
   sortBy: "rating",
@@ -14,7 +24,7 @@ const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
-    changeCategory: (state, action) => {
+    changeCategory: (state, action: PayloadAction<string>) => {
       state.category = action.payload;
       state.searchValue = "";
       state.searchValueForQuerry = "";
@@ -23,23 +33,23 @@ const filterSlice = createSlice({
     togleSortOrder: (state) => {
       state.sortOrder = state.sortOrder === "asc" ? "desc" : "asc";
     },
-    changeSortBy: (state, action) => {
+    changeSortBy: (state, action: PayloadAction<string>) => {
       state.sortBy = action.payload;
       state.currentPage = 1;
     },
-    changeSearchValueForQuerry: (state, action) => {
+    changeSearchValueForQuerry: (state, action: PayloadAction<string>) => {
       state.searchValueForQuerry = action.payload;
       state.category = "";
       state.currentPage = 1;
     },
-    changeSearchValue: (state, action) => {
+    changeSearchValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload;
     },
     clearSearch: (state) => {
       state.searchValue = "";
       state.searchValueForQuerry = "";
     },
-    changeCurrentPage: (state, action) => {
+    changeCurrentPage: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload;
     },
     clearFilterState: (state) => {
@@ -50,7 +60,7 @@ const filterSlice = createSlice({
       state.searchValueForQuerry = "";
       state.currentPage = 1;
     },
-    setFilters: (state, action) => {
+    setFilters: (state, action: PayloadAction<FilterSliceState>) => {
       state.sortBy = action.payload.sortBy || "rating";
       state.sortOrder = action.payload.sortOrder || "desc";
       state.category = action.payload.category || "";
@@ -64,10 +74,11 @@ const filterSlice = createSlice({
   },
 });
 
-export const selectFilter =
-  (filterItem = "") =>
-  (state) =>
-    filterItem ? state.filter[filterItem] : state.filter;
+export const selectFilterStateItem =
+  (filterItem: keyof FilterSliceState) => (state: RootState) =>
+    state.filter[filterItem];
+
+export const selectFilterState = () => (state: RootState) => state.filter;
 
 export const {
   changeCategory,
